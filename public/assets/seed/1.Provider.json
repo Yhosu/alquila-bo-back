@@ -1,0 +1,67 @@
+[
+    {
+        "id" : "c71b4f34-9f4b-430f-a26d-5ac34416015e",
+        "name" : "Club de tenis la paz",
+        "slug" : "ctlp",
+        "code" : "ctlp",
+        "description" : "Pagos con ctlp",
+        "class" : "CtlpService",
+        "url_testing" : "https://odootest.ctlp.bo/jsonrpc",
+        "url_production" : "https://www.ctlp.bo/jsonrpc",
+        "image" : "ctlp-image.png",
+        "active" : 1,
+        "external_payment" : 1
+    },
+    {
+        "id" : "44e464e7-bcc5-4c5c-be8a-6507f35f47ce",
+        "name" : "Alianza Generales",
+        "slug" : "alianza-generales",
+        "code" : "alianza-generales",
+        "description" : "Alianza General",
+        "class" : "AlianzaService",
+        "url_testing" : "https://todotix.alianza.com.bo/api/2",
+        "url_production" : "https://todotix.alianza.com.bo/api/2",
+        "image" : "",
+        "active" : 1,
+        "external_payment" : 1
+    },
+    {
+        "id" : "68546743-3458-4d04-ba72-50cb5d2dbe91",
+        "name" : "Alianza Vida",
+        "slug" : "alianza-vida",
+        "code" : "alianza-vida",
+        "description" : "Alianza Vida",
+        "class" : "AlianzaVidaService",
+        "url_testing" : "https://todotix.alianza.com.bo/api/1",
+        "url_production" : "https://todotix.alianza.com.bo/api/1",
+        "image" : "",
+        "active" : 1,
+        "external_payment" : 1
+    },
+    {
+        "id" : "78bcc64f-5956-442e-8f6c-25f9bc0c3a40",
+        "name" : "Alianza Vida LP",
+        "slug" : "alianza-vida-lp",
+        "code" : "alianza-vida-lp",
+        "description" : "Alianza Vida LP",
+        "class" : "AlianzaVidaServiceLp",
+        "url_testing" : "https://todotix.alianza.com.bo/api/3",
+        "url_production" : "https://todotix.alianza.com.bo/api/3",
+        "image" : "",
+        "active" : 1,
+        "external_payment" : 1
+    },
+    {
+        "id" : "d50f6c64-3b35-47df-98f0-367e88e1559d",
+        "name" : "Aguabol",
+        "slug" : "aguabol",
+        "code" : "aguabol",
+        "description" : "Pagos Aguabol",
+        "class" : "AguabolService",
+        "url_testing" : "https://aguabol.testing.com/jsonrpc",
+        "url_production" : "https://aguabol.com/jsonrpc",
+        "image" : "",
+        "active" : 1,
+        "external_payment" : 1
+    }
+]
