@@ -15,6 +15,5 @@ Route::middleware(EnsureKeysIsValid::class)->prefix('auth')->group(function () {
 });
 Route::middleware(['auth:sanctum', EnsureProviderIsValid::class])->prefix('v1')->group(function () {
 });
-
 Route::middleware(['auth:sanctum', EnsureAdminIsValid::class])->prefix('admin')->group(function () {
 });
