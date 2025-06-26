@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests\Account;
+namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\ValidationException;
 
-class CreateAccountRequest extends FormRequest
+class LoginRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,6 +22,8 @@ class CreateAccountRequest extends FormRequest
      */
     public function rules(): array {
         return [
+            'email'    => 'required|email',
+            'password' => 'required|min:6',
         ];
     }
 

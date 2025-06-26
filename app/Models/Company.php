@@ -6,19 +6,22 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
-class Category extends Model {
+class Company extends Model {
     use HasFactory;
-	protected $table  = 'categories';
+	protected $table  = 'companies';
     protected $with   = [];
-    protected $casts  = ['id' => 'string'];
+    protected $casts  = ['id' => 'string', 'enabled' => 'boolean'];
     protected $fillable = [
         'id',
+        'sector_id',
         'name',
         'description',
         'slug',
-        'image',
-        'icon',
-        'active',
+        'order',
+        'logo_image',
+        'cellphone',
+        'address',
+        'website'
     ];
 	public $timestamps = true;
     const CREATED_AT = "date_of_creation";
@@ -29,9 +32,5 @@ class Category extends Model {
         static::creating(function ($model) {
             $model->id = \Str::uuid();
         });
-    }
-
-    public function products() {
-        return $this->hasMany( Product::class, 'category_id', 'id');
     }
 }

@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
-class Product extends Model {
+class ProductFilter extends Model {
     use HasFactory;
-	protected $table  = 'products';
+	protected $table  = 'product_filters';
     protected $hidden = [ 'created_at', 'updated_at' ];
     protected $appends = ['provider_name', 'data_debt'];
     protected $casts  = [ 'id' => 'string' ];
@@ -16,15 +16,9 @@ class Product extends Model {
 	const UPDATED_AT = "last_modification";
     protected $fillable = [
         'id',
-        'company_id',
-        'category_id',
-        'name',
-        'slug',
-        'description',
-        'sku',
-        'image',
-        'top',
-        'order'
+        'product_id',
+        'company_filter_id',
+        'description'
     ];
 	public $timestamps = true;
     public $incrementing = false;
@@ -34,9 +28,5 @@ class Product extends Model {
         static::creating(function ($model) {
             $model->id = \Str::uuid();
         });
-    }
-
-    public function company() {
-        return $this->hasOne( Company::class, 'id','company_id' );
     }
 }

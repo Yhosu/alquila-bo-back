@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Profile extends Model {
+class CompanyFilter extends Model {
     use HasFactory;
-	protected $table    = 'profiles';
+	protected $table    = 'company_filters';
     protected $hidden   = [ 'created_at', 'updated_at', 'deleted_at', 'active', 'api_key_id' ];
     protected $casts    = ['id' => 'string'];
     protected $fillable = [
@@ -33,9 +33,5 @@ class Profile extends Model {
         static::creating(function ($model) {
             $model->id = \Str::uuid();
         });
-    }
-
-    public function accounts() : HasMany {
-        return $this->hasMany(Account::class);
     }
 }

@@ -6,23 +6,17 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
-class Provider extends Model {
+class CompanyFilterValue extends Model {
     use HasFactory;
-	protected $table     = 'providers';
+	protected $table     = 'company_filter_values';
     public $incrementing = false;
     protected $casts     = [ 'id' => 'string', 'active' => 'boolean' ];
     protected $with      = [];
     protected $fillable  = [
         'id',
+        'company_filter_id',
         'name',
-        'slug',
-        'code',
-        'description',
-        'class',
-        'url_testing',
-        'url_production',
-        'image',
-        'active'
+        'configuration'
     ];
 	public $timestamps = true;
     protected $hidden = [ 'pivot', 'created_at', 'updated_at', 'external_payment', 'url_testing', 'url_production', 'class', 'code' ];

@@ -3,6 +3,14 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Repositories\LoginRepository;
+use App\Repositories\HomeRepository;
+use App\Repositories\NodeRepository;
+use App\Repositories\RegisterRepository;
+use App\Repositories\Interfaces\LoginInterface;
+use App\Repositories\Interfaces\HomeInterface;
+use App\Repositories\Interfaces\NodeInterface;
+use App\Repositories\Interfaces\RegisterInterface;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -11,7 +19,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->bind(LoginInterface::class, LoginRepository::class);
+        $this->app->bind(NodeInterface::class, NodeRepository::class);
+        $this->app->bind(HomeInterface::class, HomeRepository::class);
+        $this->app->bind(RegisterInterface::class, RegisterRepository::class);
     }
 
     /**
@@ -20,8 +31,5 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         app()->useLangPath(base_path('lang'));
-        \Validator::extendImplicit('validate_tenant_url', function($attribute, $value, $parameters, $validator) {
-            return request()->tenant_id && !request()->tenant_url ? false : true;
-        });
     }
 }

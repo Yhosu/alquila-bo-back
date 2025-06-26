@@ -2,28 +2,51 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Http\Requests\LoginRequest;
+use App\Http\Requests\RegisterRequest;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Closure;
-use App\Http\Requests\Account\CreateAccountRequest;
-use App\Http\Requests\Account\CreateProfileRequest;
 use App\Services\ApiResponseService;
+use App\Repositories\Interfaces\LoginInterface;
+use App\Repositories\Interfaces\RegisterInterface;
+use Throwable;
+use App\Traits\RegisterLogs;
 
 class AuthController extends Controller {
-    public function __construct(){
+    use RegisterLogs;
+    public function __construct( 
+        private readonly LoginInterface $loginInterfaceRepository,
+        private readonly RegisterInterface $registerInterfaceRepository,
+    ){
     }
 
-    public function getAccessToken( Request $request ) {
-        $customClaims = ['josue' => 'gutierrez'];
-        $apiKey = $request->apiKeyModel;
-        $token = $apiKey->createToken('token-' . time(), ['all'])->plainTextToken;
-        return response()->json([
-            'status'       => true,
-            'access_token' => $token
-        ], 200);
+    public function getLogin( LoginRequest $request ) {
+        try {
+            $result = $this->loginInterfaceRepository->loginUser(
+            $request->validated('email'), 
+            $request->validated('password')
+            );
+            return ApiResponseService::success('Usuario logueado con éxito', $result);
+        } catch( Throwable $e ) {
+            $this->execLog( $e );
+        }
     }
 
-    public function getInformation( Request $request ) {
-        return ApiResponseService::success('Información obtenida exitósamente.', auth()->user());
+    public function getRegister( RegisterRequest $request ) {
+        try {
+            $result = $this->registerInterfaceRepository->registerUser(
+                $request->name,
+                    $request->email,
+                $request->password,
+                $request->cellphone,
+                $request->lat,
+                $request->lng
+            );
+            return ApiResponseService::create('Usuario creado con éxito', $result);
+        } catch (Throwable $e) {
+            return $this->execLog($e);
+        }        
     }
 }

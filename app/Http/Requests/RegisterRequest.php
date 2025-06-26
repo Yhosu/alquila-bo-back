@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests\Payment;
+namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\ValidationException;
 
-class PayWithCardRequest extends FormRequest
+class RegisterRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,11 +22,10 @@ class PayWithCardRequest extends FormRequest
      */
     public function rules(): array {
         return [
-            'cardId'                  => 'required',
-            'cardCvv'                 => 'required',
-            'transactionId'           => 'required',
-            'externalTransactionCode' => 'required',
-            'profileId'               => 'required'
+            'name'      => 'required',
+            'email'     => 'required|email',
+            'cellphone' => 'required|min:8|max:8',
+            'password'  => 'required|min:6',
         ];
     }
 

@@ -6,32 +6,26 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
-class Category extends Model {
+class Characteristic extends Model {
     use HasFactory;
-	protected $table  = 'categories';
-    protected $with   = [];
-    protected $casts  = ['id' => 'string'];
+	protected $table  = 'characteristics';
+    protected $hidden = [ 'created_at', 'updated_at' ];
+    protected $appends = ['provider_name', 'data_debt'];
+    protected $casts  = [ 'id' => 'string' ];
+    const CREATED_AT = "date_of_creation";
+	const UPDATED_AT = "last_modification";
     protected $fillable = [
         'id',
         'name',
-        'description',
-        'slug',
-        'image',
-        'icon',
-        'active',
+        'description'
     ];
 	public $timestamps = true;
-    const CREATED_AT = "date_of_creation";
-	const UPDATED_AT = "last_modification";
+    public $incrementing = false;
 
     public static function boot() {
         parent::boot();   
         static::creating(function ($model) {
             $model->id = \Str::uuid();
         });
-    }
-
-    public function products() {
-        return $this->hasMany( Product::class, 'category_id', 'id');
     }
 }

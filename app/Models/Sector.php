@@ -6,15 +6,23 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
-class ApiKeyProvider extends Model {
+class Sector extends Model {
     use HasFactory;
-	protected $table    = 'api_key_providers';
+	protected $table    = 'sectors';
     protected $with     = [];
     protected $casts    = [ 'id' => 'string' ];
     protected $fillable = [
         'id',
-        'api_key_id',
-        'provider_id',
+        'name',
+        'description',
+        'slug'
     ];
 	public $timestamps = false;
+
+    public static function boot() {
+        parent::boot();   
+        static::creating(function ($model) {
+            $model->id = \Str::uuid();
+        });
+    }
 }
