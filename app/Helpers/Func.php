@@ -17,4 +17,8 @@ class Func {
     	$className = 'App\\Models\\' . \Str::studly(\Str::singular($node));
         return $className;
     }
+
+	public static function sendEmail( $email, $title, $content ) {
+		
+	}
 }

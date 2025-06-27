@@ -11,6 +11,22 @@ return new class extends Migration
      */
     public function up(): void
     {
+        Schema::create('image_folders', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->enum('extension', ['jpg','png','gif'])->default('jpg');
+            $table->timestamps();
+            $table->softDeletes();
+        });
+        Schema::create('image_sizes', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('parent_id')->unsigned()->default(1);
+            $table->string('code');
+            $table->enum('type', ['original','resize','fit'])->default('original');
+            $table->integer('width')->nullable();
+            $table->integer('height')->nullable();
+            $table->foreign('parent_id')->references('id')->on('image_folders')->onDelete('cascade');
+        });
         Schema::create('sectors', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('name')->nullable();
@@ -46,6 +62,19 @@ return new class extends Migration
             $table->string('cellphone')->nullable();
             $table->string('address')->nullable();
             $table->string('website')->nullable();
+            $table->string('lat')->nullable();
+            $table->string('lng')->nullable();
+            $table->boolean('enabled')->nullable()->default(1);
+            $table->timestamp('date_of_creation')->nullable();
+            $table->timestamp('last_modification')->nullable();
+            $table->string('creator_id')->nullable();
+            $table->string('modificator_id')->nullable();
+        });
+        Schema::create('social_networks', function (Blueprint $table) {
+            $table->uuid('id')->primary();
+            $table->string('name')->nullable();
+            $table->string('icon')->nullable();
+            $table->string('url')->nullable();
             $table->boolean('enabled')->nullable()->default(1);
             $table->timestamp('date_of_creation')->nullable();
             $table->timestamp('last_modification')->nullable();
@@ -165,6 +194,9 @@ return new class extends Migration
             $table->string('creator_id')->nullable();
             $table->string('modificator_id')->nullable();
         });
+
+        /** TODO: GASPER FALTA AGREGAR NUESTRO EQUIPO Y ABOUT US */
+        /** TODO: RAMI AGREGAR LA TABLA SUBSCRIBE */
     }
 
     /**

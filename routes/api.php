@@ -11,15 +11,23 @@ use App\Http\Controllers\AppController;
 Route::prefix('v1')->group(function () {
     Route::post('/login',                        [AuthController::class, 'getLogin']);
     Route::post('/register',                     [AuthController::class, 'getRegister']);
+        /** TODO: FALTA EL LOGOUT */
+    Route::post('/logout',                       [AuthController::class, 'getLogout']);
+
     Route::post('/node-list/{node}/{paginate?}', [AppController::class,  'getNode']);
     Route::get('/home-info',                     [AppController::class,  'getHomeInfo']);
-    Route::post('/faqs',                         [AppController::class,  'getFaqs']);
+    Route::get('/faqs',                          [AppController::class,  'getFaqs']);
+
+        /** TODO: Tiene que devolver todo el acerca de nosotros */
+    Route::get('/about',                         [AppController::class,  'getAbout']);
+        /** TODO: Tiene que la información del producto por UUID  */
+    Route::get('/product/{uuid}',                [AppController::class,  'getProduct']);
+        /** TODO: Tiene que traer todas las latitutdes y longitudes de todas las compañías */
+    Route::get('/get-companies-map',             [AppController::class,  'getProduct']); 
 });
 
+    /* TODO LO QUE ESTA DEBAJO DE ACÁ ES CON TOKEN */
 Route::middleware(['auth:sanctum', EnsureProviderIsValid::class])->prefix('v1')->group(function () {
+        /* Recibir el formulario del cliente y enviar un email y whatsapp (front) */
     Route::post('/send-form',                    [AppController::class,  'getSendForm']);
-});
-
-Route::middleware(['auth:sanctum', EnsureAdminIsValid::class])->prefix('admin')->group(function () {
-
 });

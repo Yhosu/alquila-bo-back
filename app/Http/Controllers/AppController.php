@@ -42,4 +42,13 @@ class AppController extends Controller {
             return $this->execLog($e);
         }
     }
+
+    public function getFaqs() {
+        try {
+            $result = $this->homeInterfaceRepository->getFaqs();
+            return ApiResponseService::success('Faqs obtenidos con éxito.', $result);
+        } catch( Throwable $e ) {
+            return $this->execLog($e);
+        }
+    }
 }

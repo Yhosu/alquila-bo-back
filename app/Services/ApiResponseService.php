@@ -11,7 +11,6 @@ class ApiResponseService {
             [
                 'status'         => true,
                 'message'        => $message,
-                'multiple_steps' => $enableMultipleSteps,
                 'variables'      => $variables,
                 'result'         => $data,
                 'errors'         => [],

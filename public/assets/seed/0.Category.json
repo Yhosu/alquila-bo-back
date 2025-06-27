@@ -2,15 +2,10 @@
     {
         "id" : "c71b4f34-7a4b-110f-b31d-5ac34416015e",
         "name" : "Clubes",
+        "description" : "clubes",
         "slug" : "clubes",
-        "image" : "",
-        "active" : 1
-    },
-    {
-        "id" : "d63c4g19-6b4b-330f-b31d-5ac34418091e",
-        "name" : "Seguros",
-        "slug" : "seguros",
-        "image" : "",
-        "active" : 1
+        "image" : "https://bancounion.com.bo/Imagenes/Logo-Banco.png",
+        "icon" : "fa-fool",
+        "enabled" : 1
     }
 ]

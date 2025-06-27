@@ -6,19 +6,16 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
-class Category extends Model {
+class SocialNetwork extends Model {
     use HasFactory;
-	protected $table  = 'categories';
+	protected $table  = 'social_networks';
     protected $with   = [];
     protected $casts  = ['id' => 'string'];
     protected $fillable = [
         'id',
         'name',
-        'description',
-        'slug',
-        'image',
         'icon',
-        'enabled',
+        'url'
     ];
 	public $timestamps = true;
     const CREATED_AT = "date_of_creation";
@@ -29,9 +26,5 @@ class Category extends Model {
         static::creating(function ($model) {
             $model->id = \Str::uuid();
         });
-    }
-
-    public function products() {
-        return $this->hasMany( Product::class, 'category_id', 'id');
     }
 }

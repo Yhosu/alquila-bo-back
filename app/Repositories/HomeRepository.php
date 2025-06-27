@@ -18,7 +18,7 @@ class HomeRepository implements HomeInterface
 {
     public function getHome() {
         try {
-            $now = date('ymd');
+            $now = date('ymd') . '-gethome';
             $result = [];
             $information = \Cache::store('database')->remember($now, 43200, function() use( &$result ) {
                 $result['banners']         = \App\Models\Gallery::where('type', 'banner')->limit(4)->get();
@@ -26,11 +26,28 @@ class HomeRepository implements HomeInterface
                 $result['categories']      = \App\Models\Category::where('enabled')->withWhereHas('products', function($q) { $q->with(['product_characteristics', 'product_filters'])->whereHas('company', function($qq){ $qq->where('enabled', 1); }); })->get();
                 $result['characteristics'] = \App\Models\Characteristic::where('enabled', 1)->get();
                 $result['reviews']         = \App\Models\Review::where('enabled', 1)->get();
+                    /** TODO: FALTA AGREGAR INFORMACIÓN DE ALQUILA BO */
 			    return $result;
             });
             return $information;
         } catch( Throwable $th) {
             throw $th;
         }
+    }
+
+    public function getFaqs() {
+        try {
+            $now = date('ymd') . '-faqs';
+            $result = [];
+            $information = \Cache::store('database')->remember($now, 43200, function() use( &$result ) {
+                $faqs = \App\Models\Faq::where('enabled', 1)->get();
+			    return $faqs;
+            });
+                /** Enviar */
+            // \Func::sendEmail( $email, $title, $content );
+            return $information;
+        } catch( Throwable $th) {
+            throw $th;
+        }        
     }
 }

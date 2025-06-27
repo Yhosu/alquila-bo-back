@@ -27,4 +27,8 @@ class LoginRepository implements LoginInterface
         } 
         return null;
     }
+
+    public function recoverPassword(string $email, string $password, string $passworConfirmation) {
+        /** Terminar el proceso de recuperar contraseña */
+    }
 }
