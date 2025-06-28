@@ -10,6 +10,7 @@ use Throwable;
 use App\Traits\RegisterLogs;
 use App\Repositories\Interfaces\NodeInterface;
 use App\Repositories\Interfaces\HomeInterface;
+use App\http\Requests\SubscriptionRequest;
 
 class AppController extends Controller {
 
@@ -47,6 +48,17 @@ class AppController extends Controller {
         try {
             $result = $this->homeInterfaceRepository->getFaqs();
             return ApiResponseService::success('Faqs obtenidos con éxito.', $result);
+        } catch( Throwable $e ) {
+            return $this->execLog($e);
+        }
+    }
+
+    public function registerSubscription( SubscriptionRequest $request ) {
+        try {
+            $result = $this->homeInterfaceRepository->registerSubscription(
+                $request->email
+            );
+            return ApiResponseService::success('Registro de suscripción correcta.', $result);
         } catch( Throwable $e ) {
             return $this->execLog($e);
         }

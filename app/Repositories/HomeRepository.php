@@ -13,9 +13,13 @@ use App\Services\ApiResponseService;
 use Throwable;
 use Illuminate\Http\Request;
 use App\Helpers\Func;
+use App\Enums\SubscriptionStatus;
+use App\Exceptions\CustomException;
 
 class HomeRepository implements HomeInterface
 {
+    protected $modelSubscriber  = \App\Models\Subscriber::class;
+
     public function getHome() {
         try {
             $now = date('ymd') . '-gethome';
@@ -48,6 +52,22 @@ class HomeRepository implements HomeInterface
             return $information;
         } catch( Throwable $th) {
             throw $th;
-        }        
+        }
+    }
+
+    public function registerSubscription(string $email) {
+        try {
+            /*$existSubscriber = $this->modelSubscriber::where('email', $email)->first();
+            if( $existSubscriber ) throw new CustomException("Ocurrio un .", ['El usuario ya fue registrado antes previamente, intente con otro correo']);*/
+
+            $subscription = $this->modelSubscriber::create([
+                'email'     => $email,
+                'subscription_status'  => SubscriptionStatus::PENDIENTE,
+                'confirmation_token' => \Str::uuid(),
+            ]);
+            return $subscription;
+        } catch( Throwable $th) {
+            throw $th;
+        }
     }
 }
