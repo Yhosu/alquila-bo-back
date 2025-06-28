@@ -1,0 +1,32 @@
+[
+  {
+    "id": "f9b6d428-3546-4cf4-9f7b-5f34a79cfd1d",
+    "name": "¿Cómo puedo restablecer mi contraseña?",
+    "description": "Para restablecer tu contraseña, dirígete a la página de inicio de sesión y haz clic en '¿Olvidaste tu contraseña?'. Recibirás un enlace a tu correo electrónico para cambiarla.",
+    "image": "https://example.com/images/faq-reset-password.png"
+  },
+  {
+    "id": "a8b1d3b1-e28b-4d6e-83f7-145fe2e96a02",
+    "name": "¿Qué métodos de pago aceptan?",
+    "description": "Aceptamos tarjetas de crédito, débito, PayPal y transferencias bancarias. Todos los pagos son procesados de forma segura.",
+    "image": "https://example.com/images/faq-payment-methods.png"
+  },
+  {
+    "id": "4b2c0f72-9c44-4b4a-94b9-0b49d3de9bc2",
+    "name": "¿Cuánto tiempo tarda el envío?",
+    "description": "El tiempo estimado de envío depende de la ubicación y el tipo de envío seleccionado. Generalmente, los envíos nacionales tardan entre 3 a 7 días hábiles.",
+    "image": "https://example.com/images/faq-shipping-time.png"
+  },
+  {
+    "id": "d83795a7-fb8c-4a7c-b823-f5e67a9f374b",
+    "name": "¿Puedo cancelar mi pedido?",
+    "description": "Puedes cancelar tu pedido dentro de las primeras 24 horas después de realizarlo. Pasado ese tiempo, solo podremos ofrecerte una devolución según nuestra política de devoluciones.",
+    "image": "https://example.com/images/faq-cancel-order.png"
+  },
+  {
+    "id": "c602907f-67f2-4703-a450-0b8c5383b306",
+    "name": "¿Cómo puedo contactar con soporte?",
+    "description": "Puedes ponerte en contacto con nuestro equipo de soporte a través del chat en vivo en nuestra página web, por correo electrónico a soporte@ejemplo.com, o llamando al 123-456-7890.",
+    "image": "https://example.com/images/faq-contact-support.png"
+  }
+]

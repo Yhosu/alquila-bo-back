@@ -12,14 +12,16 @@ Route::prefix('v1')->group(function () {
     Route::post('/login',                        [AuthController::class, 'getLogin']);
     Route::post('/register',                     [AuthController::class, 'getRegister']);
         /** TODO: FALTA EL LOGOUT */
-    Route::post('/logout',                       [AuthController::class, 'getLogout']);
+    Route::post('/logout',                       [AuthController::class, 'getLogout'])->middleware('auth:sanctum');
 
     Route::post('/node-list/{node}/{paginate?}', [AppController::class,  'getNode']);
     Route::get('/home-info',                     [AppController::class,  'getHomeInfo']);
     Route::get('/faqs',                          [AppController::class,  'getFaqs']);
+    Route::get('/information',                   [AppController::class, 'getInformation']);
 
         /** TODO: Tiene que devolver todo el acerca de nosotros */
-    Route::get('/about',                         [AppController::class,  'getAbout']);
+    Route::get('/about-us',                         [AppController::class,  'getAboutus']);
+    Route::get('/our-team',                         [Appcontroller::class, 'getOurteam']);
         /** TODO: Tiene que la información del producto por UUID  */
     Route::get('/product/{uuid}',                [AppController::class,  'getProduct']);
         /** TODO: Tiene que traer todas las latitutdes y longitudes de todas las compañías */

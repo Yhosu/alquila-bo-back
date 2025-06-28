@@ -1,0 +1,32 @@
+[
+  {
+    "id": "a0b2d4c5-fabc-462a-b4e2-929f2fa6c567",
+    "name": "Juan Pérez",
+    "description": "El producto es excelente, tiene una excelente calidad de construcción y funciona perfectamente. La entrega fue rápida y en perfectas condiciones. Muy recomendable.",
+    "image": "https://example.com/images/review-juan.png"
+  },
+  {
+    "id": "8b9d2c39-36a0-43b9-a66f-4d5cc5fa84cb",
+    "name": "Ana Gómez",
+    "description": "Estoy muy satisfecha con la compra. El servicio al cliente fue muy atento y me ayudaron a resolver todas mis dudas. La calidad del producto es superior a lo esperado.",
+    "image": "https://example.com/images/review-ana.png"
+  },
+  {
+    "id": "f89bc79d-22e6-4e5a-a7da-9826c1ef5678",
+    "name": "Carlos López",
+    "description": "El producto llegó a tiempo y en excelente estado. Aunque la calidad es buena, esperaba un poco más por el precio. Aún así, estoy satisfecho con la compra.",
+    "image": "https://example.com/images/review-carlos.png"
+  },
+  {
+    "id": "7c2360d3-3543-49f2-983a-b39d7b4b38a6",
+    "name": "María Rodríguez",
+    "description": "¡Increíble! Funciona de maravilla, supera todas mis expectativas. Es justo lo que necesitaba. La relación calidad-precio es inmejorable. Muy feliz con la compra.",
+    "image": "https://example.com/images/review-maria.png"
+  },
+  {
+    "id": "d8b2a8f5-7724-4a7f-9a4f-0adf007d7893",
+    "name": "Luis Sánchez",
+    "description": "El producto es bueno, aunque tuve algunos problemas con el envío, ya que llegó un poco más tarde de lo esperado. Sin embargo, el soporte fue muy eficiente al resolver mi problema.",
+    "image": "https://example.com/images/review-luis.png"
+  }
+]

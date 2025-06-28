@@ -10,6 +10,7 @@ use Throwable;
 use App\Traits\RegisterLogs;
 use App\Repositories\Interfaces\NodeInterface;
 use App\Repositories\Interfaces\HomeInterface;
+use App\Repositories\Interfaces\AboutusInterface;
 
 class AppController extends Controller {
 
@@ -17,6 +18,7 @@ class AppController extends Controller {
     public function __construct(
         private readonly NodeInterface $nodeInterfaceRepository,
         private readonly HomeInterface $homeInterfaceRepository,
+        private readonly AboutusInterface $aboutusInterfaceRepository,
     ){
     }
 
@@ -47,6 +49,30 @@ class AppController extends Controller {
         try {
             $result = $this->homeInterfaceRepository->getFaqs();
             return ApiResponseService::success('Faqs obtenidos con éxito.', $result);
+        } catch( Throwable $e ) {
+            return $this->execLog($e);
+        }
+    }
+    public function getInformation() {
+        try {
+            $result = $this->homeInterfaceRepository->getInformation();
+            return ApiResponseService::success('Agregar información obtenidos con éxito.', $result);
+        } catch( Throwable $e ) {
+            return $this->execLog($e);
+        }
+    }
+    public function getAboutus() {
+        try {
+            $result = $this->aboutusInterfaceRepository->getAboutus();
+            return ApiResponseService::success('Acerca de nosotros obtenidos con éxito.', $result);
+        } catch( Throwable $e ) {
+            return $this->execLog($e);
+        }
+    }
+        public function getOurteam() {
+        try {
+            $result = $this->aboutusInterfaceRepository->getOurteam();
+            return ApiResponseService::success('Nuestro equipo obtenidos con éxito.', $result);
         } catch( Throwable $e ) {
             return $this->execLog($e);
         }

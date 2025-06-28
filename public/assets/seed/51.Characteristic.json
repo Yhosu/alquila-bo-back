@@ -1,0 +1,27 @@
+[
+  {
+    "id": "bd629f63-3a42-4e53-94e7-944d907f3b6f",
+    "name": "Teclado Mecánico",
+    "description": "Un teclado diseñado para ofrecer una experiencia de escritura más precisa y rápida, ideal para juegos y programación."
+  },
+  {
+    "id": "a6b6c7d2-76f5-42c8-9055-2a47d7fe9fcb",
+    "name": "Monitor 4K",
+    "description": "Pantalla de alta resolución que ofrece una claridad visual impresionante, perfecta para editores de video y diseñadores gráficos."
+  },
+  {
+    "id": "ea3b9480-1ad3-4310-a53d-3bbab5d39f58",
+    "name": "Cámara DSLR",
+    "description": "Cámara profesional para fotógrafos que buscan una calidad de imagen superior y un control completo sobre la configuración."
+  },
+  {
+    "id": "d83269b4-70b1-4f3d-a3c4-e460b90de5ac",
+    "name": "Auriculares Inalámbricos",
+    "description": "Auriculares de alta calidad que se conectan de manera inalámbrica a tu dispositivo, con cancelación de ruido y excelente sonido."
+  },
+  {
+    "id": "c8a90b8f-774b-4cc7-85c3-daa5631a77d9",
+    "name": "Smartphone de Última Generación",
+    "description": "Un teléfono inteligente con características avanzadas, ideal para usuarios que buscan tecnología de punta en sus manos."
+  }
+]

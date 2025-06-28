@@ -165,7 +165,7 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->string('name')->nullable();
             $table->text('description')->nullable();
-            $table->integer('image')->nullable();
+            $table->string('image')->nullable();
             $table->integer('order')->nullable();
             $table->boolean('enabled')->nullable()->default(1);
             $table->timestamp('date_of_creation')->nullable();
@@ -177,7 +177,7 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->string('name')->nullable();
             $table->text('description')->nullable();
-            $table->integer('image')->nullable();
+            $table->string('image')->nullable();
             $table->boolean('enabled')->nullable()->default(1);
             $table->timestamp('date_of_creation')->nullable();
             $table->timestamp('last_modification')->nullable();
@@ -188,6 +188,43 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->string('name')->nullable();
             $table->text('description')->nullable();
+            $table->boolean('enabled')->nullable()->default(1);
+            $table->timestamp('date_of_creation')->nullable();
+            $table->timestamp('last_modification')->nullable();
+            $table->string('creator_id')->nullable();
+            $table->string('modificator_id')->nullable();
+        });
+        Schema::create('about_us', function (Blueprint $table) {
+            $table->uuid('id')->primary();
+            $table->string('title')->nullable();
+            $table->text('content')->nullable();
+            $table->string('image_url')->nullable();
+            $table->string('video_url')->nullable();
+            $table->string('order')->nullable();
+            $table->boolean('enabled')->nullable()->default(1);
+            $table->timestamp('date_of_creation')->nullable();
+            $table->timestamp('last_modification')->nullable();
+            $table->string('creator_id')->nullable();
+            $table->string('modificator_id')->nullable();
+        });
+        Schema::create('our_team', function (Blueprint $table) {
+            $table->uuid('id')->primary();
+            $table->string('role')->nullable();
+            $table->string('bio')->nullable();
+            $table->string('photo_url')->nullable();
+            $table->boolean('enabled')->nullable()->default(1);
+            $table->timestamp('date_of_creation')->nullable();
+            $table->timestamp('last_modification')->nullable();
+            $table->string('creator_id')->nullable();
+            $table->string('modificator_id')->nullable();
+        });
+        Schema::create('add_information', function (Blueprint $table) {
+            $table->uuid('id')->primary();
+            $table->string('name')->nullable();
+            $table->text('address')->nullable();
+            $table->text('phone_number')->nullable();
+            $table->text('email')->nullable();
+            $table->text('opening_hour')->nullable();
             $table->boolean('enabled')->nullable()->default(1);
             $table->timestamp('date_of_creation')->nullable();
             $table->timestamp('last_modification')->nullable();

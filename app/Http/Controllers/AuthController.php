@@ -49,4 +49,12 @@ class AuthController extends Controller {
             return $this->execLog($e);
         }        
     }
+    public function getLogout( Request $request ) {
+        try {
+            $request->user()->currentAccessToken()->delete();
+            return ApiResponseService::create('Haz cerrado sesión con éxito');
+        } catch (Throwable $e) {
+            return $this->execLog($e);
+        }        
+    }
 }
