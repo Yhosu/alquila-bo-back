@@ -2,6 +2,8 @@
 
 namespace App\Repositories;
 
+use App\Exceptions\CustomException;
+use App\Exceptions\NotFoundException;
 use App\Exceptions\BadRequestException;
 use App\Traits\CRUDOperations;
 use Exception;
@@ -25,7 +27,7 @@ class LoginRepository implements LoginInterface
             ];
             return $result;
         } 
-        return null;
+        throw new CustomException("Hubo un error al iniciar sesión", ['Ingrese los datos correctos para iniciar sesión']);
     }
 
     public function recoverPassword(string $email, string $password, string $passworConfirmation) {
