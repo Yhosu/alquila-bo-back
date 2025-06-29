@@ -200,6 +200,7 @@ return new class extends Migration
         Schema::create('subscriptions', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('email')->nullable();
+            $table->string('name')->nullable();
             $table->string('subscription_status')->nullable();
             $table->string('confirmation_token')->unique();
             $table->timestamp('confirmation_date')->useCurrent();
@@ -209,6 +210,20 @@ return new class extends Migration
             $table->string('creator_id')->nullable();
             $table->string('modificator_id')->nullable();
         });
+
+        Schema::create('notification_templates', function (Blueprint $table) {
+            $table->string('cod_notification')->primary();
+            $table->string('description')->nullable();
+            $table->string('type')->nullable();
+            $table->string('subject')->nullable();
+            $table->text('template')->nullable();
+            $table->boolean('enabled')->nullable()->default(1);
+            $table->timestamp('date_of_creation')->nullable();
+            $table->timestamp('last_modification')->nullable();
+            $table->string('creator_id')->nullable();
+            $table->string('modificator_id')->nullable();
+        });
+
     }
 
     /**

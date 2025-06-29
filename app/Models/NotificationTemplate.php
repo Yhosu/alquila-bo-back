@@ -6,25 +6,26 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
-class Subscriber extends Model {
+class NotificationTemplate extends Model {
     use HasFactory;
-	protected $table    = 'subscriptions';
+	protected $table    = 'notification_templates';
     protected $with     = [];
-    protected $casts    = [ 'id' => 'string' ];
+    protected $casts    = [ 'cod_notification' => 'string' ];
     protected $fillable = [
-        'email',
-        'name',
-        'subscription_status',
-        'confirmation_token',
+        'cod_notification',
+        'description',
+        'type',
+        'subject',
+        'template',
     ];
 	public $timestamps = true;
     const CREATED_AT = "date_of_creation";
 	const UPDATED_AT = "last_modification";
 
-    public static function boot() {
+    /*public static function boot() {
         parent::boot();
         static::creating(function ($model) {
             $model->id = \Str::uuid();
         });
-    }
+    }*/
 }

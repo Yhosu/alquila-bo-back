@@ -15,10 +15,18 @@ use Illuminate\Http\Request;
 use App\Helpers\Func;
 use App\Enums\SubscriptionStatus;
 use App\Exceptions\CustomException;
+use App\Services\EmailService;
 
 class HomeRepository implements HomeInterface
 {
     protected $modelSubscriber  = \App\Models\Subscriber::class;
+    protected $modelNotificationTemplate  = \App\Models\NotificationTemplate::class;
+    protected $emailService;
+
+    public function __construct(EmailService $emailService)
+    {
+        $this->emailService = $emailService;
+    }
 
     public function getHome() {
         try {
@@ -55,17 +63,39 @@ class HomeRepository implements HomeInterface
         }
     }
 
-    public function registerSubscription(string $email) {
+    public function registerSubscription(string $email, ?string $name = null) {
         try {
-            /*$existSubscriber = $this->modelSubscriber::where('email', $email)->first();
-            if( $existSubscriber ) throw new CustomException("Ocurrio un .", ['El usuario ya fue registrado antes previamente, intente con otro correo']);*/
+            $existSubscriber = $this->modelSubscriber::where('email', $email)->where('enabled', 1)->first();
+            if( $existSubscriber ) {
+                $subscription =  $existSubscriber;
+                $resultSendEmail = true;
+            }else{
+                $subscription = $this->modelSubscriber::create([
+                    'email'                 => $email,
+                    'name'                  => $name,
+                    'subscription_status'   => SubscriptionStatus::PENDIENTE,
+                    'confirmation_token'    => \Str::upper(\Str::uuid()),
+                ]);
+                $now = date('ymd') . '-getNotificationTemplate';
+                $notificationTemplateCache = \Cache::store('database')->remember($now, 43200, function() use( &$notificationTemplate ) {
+                    $notificationTemplate = $this->modelNotificationTemplate::where('cod_notification', 'WELCOME_EMAIL')->where('enabled', 1)->first();
+			        return $notificationTemplate;
+                });
 
-            $subscription = $this->modelSubscriber::create([
-                'email'     => $email,
-                'subscription_status'  => SubscriptionStatus::PENDIENTE,
-                'confirmation_token' => \Str::uuid(),
-            ]);
-            return $subscription;
+                $resultSendEmail = $this->emailService->sendEmail(
+                    $email,
+                    $notificationTemplateCache->subject,
+                    $notificationTemplateCache->template
+                );
+                $resultSendEmail = true;
+            };
+
+            $resultSubscription = [
+                'subscription' => $subscription,
+                'status_send_email'  => $resultSendEmail
+            ];
+
+            return $resultSubscription;
         } catch( Throwable $th) {
             throw $th;
         }

@@ -56,7 +56,8 @@ class AppController extends Controller {
     public function registerSubscription( SubscriptionRequest $request ) {
         try {
             $result = $this->homeInterfaceRepository->registerSubscription(
-                $request->email
+                $request->email,
+                $request->name
             );
             return ApiResponseService::success('Registro de suscripción correcta.', $result);
         } catch( Throwable $e ) {
