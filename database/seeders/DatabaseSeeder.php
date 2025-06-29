@@ -17,6 +17,6 @@ class DatabaseSeeder extends Seeder
             'email' => 'user@admin.com',
             'password' => bcrypt('12345678')
         ]);
-       // \SeedFunc::loadData();
+       \SeedFunc::loadData();
     }
 }

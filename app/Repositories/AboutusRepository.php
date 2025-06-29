@@ -22,28 +22,13 @@ class AboutusRepository implements AboutusInterface
             $now = date('ymd') . '-getaboutus';
             $result = [];
             $information = \Cache::store('database')->remember($now, 43200, function() use( &$result ) {
-                $result['banners']         = \App\Models\Gallery::where('type', 'banner')->limit(4)->get();
+                $result['about_us'] = \App\Models\AboutUs::where('enabled', 1)->get();
+                $result['our_team'] = \App\Models\OurTeam::where('enabled', 1)->get();
 			    return $result;
             });
             return $information;
         } catch( Throwable $th) {
             throw $th;
         }
-    }
-
-    public function getOurteam() {
-        try {
-            $now = date('ymd') . '-ourteam';
-            $result = [];
-            $information = \Cache::store('database')->remember($now, 43200, function() use( &$result ) {
-                $team = \App\Models\Ourteam::where('enabled', 1)->get();
-			    return $team;
-            });
-                /** Enviar */
-            // \Func::sendEmail( $email, $title, $content );
-            return $information;
-        } catch( Throwable $th) {
-            throw $th;
-        }        
     }
 }

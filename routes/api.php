@@ -11,17 +11,13 @@ use App\Http\Controllers\AppController;
 Route::prefix('v1')->group(function () {
     Route::post('/login',                        [AuthController::class, 'getLogin']);
     Route::post('/register',                     [AuthController::class, 'getRegister']);
-        /** TODO: FALTA EL LOGOUT */
-    Route::post('/logout',                       [AuthController::class, 'getLogout'])->middleware('auth:sanctum');
 
-    Route::post('/node-list/{node}/{paginate?}', [AppController::class,  'getNode']);
-    Route::get('/home-info',                     [AppController::class,  'getHomeInfo']);
-    Route::get('/faqs',                          [AppController::class,  'getFaqs']);
+    Route::post('/node-list/{node}/{paginate?}', [AppController::class, 'getNode']);
+    Route::get('/home-info',                     [AppController::class, 'getHomeInfo']);
+    Route::get('/faqs',                          [AppController::class, 'getFaqs']);
     Route::get('/information',                   [AppController::class, 'getInformation']);
-
-        /** TODO: Tiene que devolver todo el acerca de nosotros */
-    Route::get('/about-us',                         [AppController::class,  'getAboutus']);
-    Route::get('/our-team',                         [Appcontroller::class, 'getOurteam']);
+    Route::get('/about-us',                      [AppController::class, 'getAboutus']);
+    Route::get('/our-team',                      [Appcontroller::class, 'getOurteam']);
         /** TODO: Tiene que la información del producto por UUID  */
     Route::get('/product/{uuid}',                [AppController::class,  'getProduct']);
         /** TODO: Tiene que traer todas las latitutdes y longitudes de todas las compañías */
@@ -29,7 +25,8 @@ Route::prefix('v1')->group(function () {
 });
 
     /* TODO LO QUE ESTA DEBAJO DE ACÁ ES CON TOKEN */
-Route::middleware(['auth:sanctum', EnsureProviderIsValid::class])->prefix('v1')->group(function () {
+Route::middleware(['auth:sanctum'])->prefix('v1')->group(function () {
         /* Recibir el formulario del cliente y enviar un email y whatsapp (front) */
+    Route::get('/logout',                        [AuthController::class, 'getLogout']);
     Route::post('/send-form',                    [AppController::class,  'getSendForm']);
 });

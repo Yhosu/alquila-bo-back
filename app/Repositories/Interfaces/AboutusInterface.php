@@ -4,6 +4,4 @@ namespace App\Repositories\Interfaces;
 
 interface AboutusInterface {
     public function getAboutus();
-    public function getOurteam();
-    
 }

@@ -21,7 +21,7 @@ class RegisterRepository implements RegisterInterface
     public function registerUser( string $name, string $email, string $password, string $cellphone, string $lat = null, string $lng = null,  ) {
         try {
             $existUser = $this->model::where('email', $email)->first();
-            if( $existUser ) throw new CustomException("Hubo un error al validar su usuario.", ['El usuario ya fue registrado antes previamente, intente con otro correo']);
+            if( $existUser ) throw new CustomException("Hubo un error al validar su usuario.", ['El usuario ya fue registrado antes previamente, intente con otro correo'], 400);
             $user = $this->model::create([
                 'name'      => $name,
                 'email'     => $email,

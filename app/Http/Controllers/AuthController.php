@@ -30,7 +30,7 @@ class AuthController extends Controller {
             );
             return ApiResponseService::success('Usuario logueado con éxito', $result);
         } catch( Throwable $e ) {
-            return ApiResponseService::error('Hubo un error al intentar iniciar sesión', ['Ingrese los datos correctos para poder iniciar sesión']);
+            return ApiResponseService::error('Hubo un error al intentar iniciar sesión', ['Ingrese los datos correctos para poder iniciar sesión'], [], [], 401);
         }
     }
 
@@ -46,13 +46,13 @@ class AuthController extends Controller {
             );
             return ApiResponseService::create('Usuario creado con éxito', $result);
         } catch (Throwable $e) {
-            return $this->execLog($e);
+            return ApiResponseService::error('Hubo un error al validar su usuario', ['El usuario ya fue registrado antes previamente, intente con otro correo'], [], [], 400);
         }        
     }
     public function getLogout( Request $request ) {
         try {
             $request->user()->currentAccessToken()->delete();
-            return ApiResponseService::create('Haz cerrado sesión con éxito');
+            return ApiResponseService::success('Haz cerrado sesión con éxito');
         } catch (Throwable $e) {
             return $this->execLog($e);
         }        
