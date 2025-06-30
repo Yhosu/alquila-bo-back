@@ -39,4 +39,16 @@ class Product extends Model {
     public function company() {
         return $this->hasOne( Company::class, 'id','company_id' );
     }
+
+    public function product_characteristics() {
+        return $this->hasMany( ProductCharacteristic::class, 'product_id','id' );
+    }
+
+    public function product_filters() {
+        return $this->hasMany( ProductFilter::class, 'product_id','id' );
+    }
+
+    public function galleries() {
+        return $this->hasMany( Gallery::class, 'relation_id','id' )->where( 'type', 'product')->where('enabled', 1);
+    }
 }

@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Exceptions\BadRequestException;
+use App\Exceptions\CustomException;
 use App\Traits\CRUDOperations;
 use Exception;
 use Illuminate\Support\Facades\Artisan;
@@ -65,5 +66,12 @@ class HomeRepository implements HomeInterface
         } catch( Throwable $th) {
             throw $th;
         }        
+    }
+
+    public function getProduct( string $id ) {
+        $product = \App\Models\Product::with(['galleries', 'product_characteristics', 'product_filters'=>function($q){
+            $q->with(['company_filters'=>function($qq){ $qq->with('company_filter_values'); }]); }])->find( $id );
+        if( $product == null ) throw new BadRequestException("Hubo un error al buscar su producto", ['No se encuentra el producto asociado al id ingresado.']);
+        return $product;
     }
 }

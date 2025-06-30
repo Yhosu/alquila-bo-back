@@ -58,7 +58,7 @@ return new class extends Migration
             $table->string('description')->nullable();
             $table->string('slug')->nullable();
             $table->integer('order')->nullable();
-            $table->string('logo_image')->nullable();
+            $table->string('image')->nullable();
             $table->string('cellphone')->nullable();
             $table->string('address')->nullable();
             $table->string('website')->nullable();
@@ -198,8 +198,8 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->string('title')->nullable();
             $table->text('content')->nullable();
-            $table->string('image_url')->nullable();
-            $table->string('video_url')->nullable();
+            // $table->string('image')->nullable();
+            // $table->string('video_url')->nullable();
             $table->string('order')->nullable();
             $table->boolean('enabled')->nullable()->default(1);
             $table->timestamp('date_of_creation')->nullable();

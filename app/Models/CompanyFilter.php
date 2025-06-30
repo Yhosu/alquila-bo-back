@@ -34,4 +34,8 @@ class CompanyFilter extends Model {
             $model->id = \Str::uuid();
         });
     }
+
+    public function company_filter_values() {
+        return $this->hasMany(CompanyFilterValue::class, 'company_filter_id', 'id');
+    }
 }

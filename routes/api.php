@@ -17,11 +17,10 @@ Route::prefix('v1')->group(function () {
     Route::get('/faqs',                          [AppController::class, 'getFaqs']);
     Route::get('/information',                   [AppController::class, 'getInformation']);
     Route::get('/about-us',                      [AppController::class, 'getAboutus']);
-    Route::get('/our-team',                      [Appcontroller::class, 'getOurteam']);
         /** TODO: Tiene que la información del producto por UUID  */
     Route::get('/product/{uuid}',                [AppController::class,  'getProduct']);
         /** TODO: Tiene que traer todas las latitutdes y longitudes de todas las compañías */
-    Route::get('/get-companies-map',             [AppController::class,  'getProduct']); 
+    Route::get('/get-companies-map',             [AppController::class,  'getCompaniesMap']); 
 });
 
     /* TODO LO QUE ESTA DEBAJO DE ACÁ ES CON TOKEN */

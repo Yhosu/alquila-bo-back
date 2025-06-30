@@ -69,12 +69,16 @@ class AppController extends Controller {
             return $this->execLog($e);
         }
     }
-        public function getOurteam() {
+
+    public function getProduct( $id ) {
         try {
-            $result = $this->aboutusInterfaceRepository->getOurteam();
-            return ApiResponseService::success('Nuestro equipo obtenidos con éxito.', $result);
+            $product = $this->homeInterfaceRepository->getProduct(
+                $id
+            );
+            return ApiResponseService::success('Producto obtenido con éxito.', $product);
         } catch( Throwable $e ) {
             return $this->execLog($e);
         }
+        
     }
 }

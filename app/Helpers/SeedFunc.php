@@ -24,7 +24,7 @@ class SeedFunc {
                 'extension' => 'png',
             ],
         ];
-        $insert_image_folders = \App\Models\ImageFolder::insert($image_folders);
+        \App\Models\ImageFolder::insert($image_folders);
         $image_sizes = [
             [ 
                 'id'        => 1,

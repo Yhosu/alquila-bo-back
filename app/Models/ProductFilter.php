@@ -29,4 +29,12 @@ class ProductFilter extends Model {
             $model->id = \Str::uuid();
         });
     }
+
+    public function product() {
+        return $this->hasOne(Product::class,'id','product_id');
+    }
+
+    public function company_filters() {
+        return $this->hasMany(CompanyFilter::class,'id','company_filter_id');
+    }
 }

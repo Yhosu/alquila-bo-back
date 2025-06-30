@@ -38,7 +38,7 @@ class AuthController extends Controller {
         try {
             $result = $this->registerInterfaceRepository->registerUser(
                 $request->name,
-                    $request->email,
+                $request->email,
                 $request->password,
                 $request->cellphone,
                 $request->lat,
