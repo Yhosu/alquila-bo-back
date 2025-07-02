@@ -1,0 +1,27 @@
+[
+  {
+    "id": "f2a3c1d0-9e7a-4a1b-86a1-3d1aabce5c12",
+    "name": "Tecnología",
+    "description": "Sector enfocado en el desarrollo e innovación de soluciones tecnológicas y digitales."
+  },
+  {
+    "id": "1e56c1a3-40b4-4a9d-b14e-0c4ddfa1f44e",
+    "name": "Salud",
+    "description": "Comprende servicios médicos, farmacéuticos y bienestar general de la población."
+  },
+  {
+    "id": "9d8b7e24-7c5a-4b5a-93f1-e2bcbb5f8c73",
+    "name": "Educación",
+    "description": "Incluye instituciones, servicios y recursos dedicados a la enseñanza y aprendizaje."
+  },
+  {
+    "id": "2fa9e0a7-74f9-4263-9207-c2f2b2a9f9e4",
+    "name": "Energía",
+    "description": "Abarca la producción, distribución y gestión de fuentes de energía tradicionales y renovables."
+  },
+  {
+    "id": "45cc3f67-d8ae-4a3b-9d1e-3bb3b06c6e9e",
+    "name": "Finanzas",
+    "description": "Engloba bancos, aseguradoras, inversiones y otros servicios financieros."
+  }
+]

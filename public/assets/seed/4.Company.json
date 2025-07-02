@@ -1,0 +1,62 @@
+[
+  {
+    "id": "3f1e392e-4e7c-40b2-bdb4-f24c0f0c3453",
+    "sector_id": "f2a3c1d0-9e7a-4a1b-86a1-3d1aabce5c12",
+    "name": "TechNova",
+    "description": "Empresa dedicada al desarrollo de soluciones tecnológicas innovadoras.",
+    "image": "https://images.unsplash.com/photo-1581090700227-1e8e8a9b253c?auto=format&fit=crop&w=800&q=80&fm=jpg",
+    "cellphone": "+1 415-555-1234",
+    "address": "500 Howard St, San Francisco, CA 94105",
+    "website": "https://www.technova.com",
+    "lat": "37.7898",
+    "lng": "-122.3942"
+  },
+  {
+    "id": "d2fbbf7d-6c3e-493f-a1b2-89fd7a5e3c9e",
+    "sector_id": "9d8b7e24-7c5a-4b5a-93f1-e2bcbb5f8c73",
+    "name": "GastroWorld",
+    "description": "Cadena internacional de restaurantes gourmet.",
+    "image": "https://images.unsplash.com/photo-1555992336-03a23c7b20e2?auto=format&fit=crop&w=800&q=80&fm=jpg",
+    "cellphone": "+34 912 345 678",
+    "address": "Calle de Alcalá 45, 28014 Madrid, España",
+    "website": "https://www.gastroworld.com",
+    "lat": "40.4196",
+    "lng": "-3.7036"
+  },
+  {
+    "id": "1afed932-2d7d-490a-9085-7419b160a9f0",
+    "sector_id": "2fa9e0a7-74f9-4263-9207-c2f2b2a9f9e4",
+    "name": "EcoTravel",
+    "description": "Agencia de viajes sostenibles y turismo ecológico.",
+    "image": "https://images.unsplash.com/photo-1502920514313-52581002a659?auto=format&fit=crop&w=800&q=80&fm=jpg",
+    "cellphone": "+44 20 7946 0958",
+    "address": "221B Baker Street, London, UK",
+    "website": "https://www.ecotravel.com",
+    "lat": "51.5238",
+    "lng": "-0.1586"
+  },
+  {
+    "id": "8e5a13b6-5e29-4d30-b9c6-8f621c85ac63",
+    "sector_id": "45cc3f67-d8ae-4a3b-9d1e-3bb3b06c6e9e",
+    "name": "ModaElite",
+    "description": "Marca de moda de lujo con presencia global.",
+    "image": "https://images.unsplash.com/photo-1520975918313-44a9f9842f59?auto=format&fit=crop&w=800&q=80&fm=jpg",
+    "cellphone": "+33 1 42 68 53 00",
+    "address": "31 Rue Cambon, 75001 Paris, France",
+    "website": "https://www.modaelite.com",
+    "lat": "48.8667",
+    "lng": "2.3281"
+  },
+  {
+    "id": "9aaf1e56-8b64-4e27-a7f3-e8f3c60fd9f4",
+    "sector_id": "1e56c1a3-40b4-4a9d-b14e-0c4ddfa1f44e",
+    "name": "FitForce",
+    "description": "Red de gimnasios y centros de bienestar físico.",
+    "image": "https://images.unsplash.com/photo-1599058917212-d750089bc07e?auto=format&fit=crop&w=800&q=80&fm=jpg",
+    "cellphone": "+49 89 123 456",
+    "address": "Theresienhöhe 15, 80339 München, Germany",
+    "website": "https://www.fitforce.com",
+    "lat": "48.1351",
+    "lng": "11.5820"
+  }
+]

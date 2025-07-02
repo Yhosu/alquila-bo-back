@@ -1,0 +1,32 @@
+[
+  {
+    "id": "5d85c08e-ef7b-4e68-91fc-4ed1b6eb47fd",
+    "name": "Tecnología",
+    "description": "Innovaciones tecnológicas, gadgets y avances en software.",
+    "image": "https://images.unsplash.com/photo-1518779578993-ec3579fee39f?auto=format&fit=crop&w=800&q=80&fm=jpg"
+  },
+  {
+    "id": "d76fdc68-bad2-47c1-9891-8a50be279b84",
+    "name": "Moda",
+    "description": "Tendencias de moda urbana, alta costura y estilos personales.",
+    "image": "https://images.unsplash.com/photo-1521334884684-d80222895322?auto=format&fit=crop&w=800&q=80&fm=jpg"
+  },
+  {
+    "id": "a8e9f97d-50ec-4746-8b56-4cf7ad7f6d22",
+    "name": "Gastronomía",
+    "description": "Comida internacional, recetas caseras y experiencias culinarias.",
+    "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=80&fm=jpg"
+  },
+  {
+    "id": "8a3720c5-6a0d-4a4a-a0fa-2a90a5f0b11f",
+    "name": "Deportes",
+    "description": "Cobertura de eventos deportivos, análisis y resultados.",
+    "image": "https://images.unsplash.com/photo-1521412644187-c49fa049e84d?auto=format&fit=crop&w=800&q=80&fm=jpg"
+  },
+  {
+    "id": "e9c9d26f-11d1-4047-b53c-c1474e8ce5a0",
+    "name": "Viajes",
+    "description": "Explora destinos exóticos, recomendaciones y guías de viaje.",
+    "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80&fm=jpg"
+  }
+]
