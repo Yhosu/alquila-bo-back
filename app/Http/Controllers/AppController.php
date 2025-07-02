@@ -11,7 +11,7 @@ use App\Traits\RegisterLogs;
 use App\Repositories\Interfaces\NodeInterface;
 use App\Repositories\Interfaces\HomeInterface;
 use App\Repositories\Interfaces\AboutusInterface;
-
+use App\http\Requests\SubscriptionRequest;
 class AppController extends Controller {
 
     use RegisterLogs;
@@ -79,6 +79,17 @@ class AppController extends Controller {
         } catch( Throwable $e ) {
             return $this->execLog($e);
         }
-        
+    }
+
+    public function registerSubscription( SubscriptionRequest $request ) {
+        try {
+            $result = $this->homeInterfaceRepository->registerSubscription(
+                $request->email,
+                $request->name
+            );
+            return ApiResponseService::success('Registro de suscripción correcta.', $result);
+        } catch( Throwable $e ) {
+            return $this->execLog($e);
+        }
     }
 }

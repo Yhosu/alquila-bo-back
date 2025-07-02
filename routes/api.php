@@ -21,6 +21,7 @@ Route::prefix('v1')->group(function () {
     Route::get('/product/{uuid}',                [AppController::class,  'getProduct']);
         /** TODO: Tiene que traer todas las latitutdes y longitudes de todas las compañías */
     Route::get('/get-companies-map',             [AppController::class,  'getCompaniesMap']); 
+    Route::post('/register-subscription',        [AppController::class,  'registerSubscription']);
 });
 
     /* TODO LO QUE ESTA DEBAJO DE ACÁ ES CON TOKEN */
