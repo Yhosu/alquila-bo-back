@@ -15,7 +15,6 @@ use Throwable;
 use Illuminate\Http\Request;
 use App\Helpers\Func;
 use App\Enums\SubscriptionStatus;
-use App\Exceptions\CustomException;
 use App\Services\EmailService;
 
 class HomeRepository implements HomeInterface
