@@ -143,6 +143,7 @@ return new class extends Migration
         });
         Schema::create('product_characteristics', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->string('product_id')->nullable();
             $table->string('name')->nullable();
             $table->string('description')->nullable();
             $table->boolean('enabled')->nullable()->default(1);
