@@ -8,15 +8,13 @@ use Illuminate\Support\Str;
 
 class Aboutus extends Model {
     use HasFactory;
-	protected $table  = 'faqs';
+	protected $table  = 'about_us';
     protected $with   = [];
     protected $casts  = ['id' => 'string', 'enabled' => 'boolean'];
     protected $fillable = [
         'id',
         'tittle',
         'content',
-        'image_url',
-        'video_url',
         'order',
     ];
 	public $timestamps = true;
