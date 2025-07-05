@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
  use Laravel\Sanctum\HasApiTokens;
 
-class Ourteam extends Model
+class OurTeam extends Model
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory;
