@@ -10,7 +10,6 @@ class Product extends Model {
     use HasFactory;
 	protected $table  = 'products';
     protected $hidden = [ 'created_at', 'updated_at' ];
-    protected $appends = ['provider_name', 'data_debt'];
     protected $casts  = [ 'id' => 'string' ];
     const CREATED_AT = "date_of_creation";
 	const UPDATED_AT = "last_modification";

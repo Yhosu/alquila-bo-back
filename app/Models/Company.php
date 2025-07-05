@@ -18,7 +18,7 @@ class Company extends Model {
         'description',
         'slug',
         'order',
-        'logo_image',
+        'image',
         'cellphone',
         'address',
         'website'
