@@ -137,9 +137,22 @@ class HomeRepository implements HomeInterface
     }
 
     public function getProduct( string $id ) {
-        $product = \App\Models\Product::with(['galleries', 'product_characteristics', 'product_filters'=>function($q){
-            $q->with(['company_filters'=>function($qq){ $qq->with('company_filter_values'); }]); }])->find( $id );
+        $product = \App\Models\Product::find( $id );
         if( $product == null ) throw new BadRequestException("Hubo un error al buscar su producto", ['No se encuentra el producto asociado al id ingresado.']);
         return $product;
+    }
+
+    public function registerForm( $userId, $productId, $initDate, $finishDate, $filters = '' ) {
+        $product = \App\Models\Product::find( $productId );
+        if( !$product ) throw new BadRequestException("Hubo un error al buscar su producto", ['No se encuentra el producto asociado al id ingresado.']);
+        $nwForm = new \App\Models\ReservationForm;
+        $nwForm->user_id     = $userId;
+        $nwForm->product_id  = $productId;
+        $nwForm->init_date   = $initDate;
+        $nwForm->finish_date = $finishDate;
+        $nwForm->filters     = $filters;
+        $nwForm->save();
+            /** TODO: Enviar correo electrónico */
+        return $nwForm;
     }
 }

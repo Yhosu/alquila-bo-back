@@ -10,6 +10,8 @@ class Product extends Model {
     use HasFactory;
 	protected $table  = 'products';
     protected $hidden = [ 'created_at', 'updated_at' ];
+    protected $appends = ['image_url'];
+    protected $with = ['product_characteristics', 'product_filters', 'galleries'];
     protected $casts  = [ 'id' => 'string' ];
     const CREATED_AT = "date_of_creation";
 	const UPDATED_AT = "last_modification";
@@ -35,12 +37,16 @@ class Product extends Model {
         });
     }
 
+    public function getImageUrlAttribute() {
+        return asset( \Asset::get_image_path( 'product-image', 'normal', $this->attributes['image'] ) );
+    }
+
     public function company() {
         return $this->hasOne( Company::class, 'id','company_id' );
     }
 
     public function product_characteristics() {
-        return $this->hasMany( ProductCharacteristic::class, 'product_id','id' );
+        return $this->hasMany( ProductCharacteristic::class, 'product_id','id' )->orderBy('order', 'ASC');
     }
 
     public function product_filters() {
@@ -48,6 +54,6 @@ class Product extends Model {
     }
 
     public function galleries() {
-        return $this->hasMany( Gallery::class, 'entity_id','id' )->where( 'entity_type', 'product')->where('subtype', 'galeria')->where('enabled', 1);
+        return $this->hasMany( Gallery::class, 'entity_id','id' )->where( 'entity_type', 'product')->where('enabled', 1)->with('gallery_images');
     }
 }

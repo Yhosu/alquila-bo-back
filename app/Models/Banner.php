@@ -11,6 +11,7 @@ class Banner extends Model {
 	protected $table  = 'banners';
     protected $with   = [];
     protected $casts  = ['id' => 'string', 'enabled' => 'boolean'];
+    protected $appends = ['image_url'];
     protected $fillable = [
         'id',
         'image',
@@ -26,5 +27,9 @@ class Banner extends Model {
         static::creating(function ($model) {
             $model->id = \Str::uuid();
         });
+    }
+
+    public function getImageUrlAttribute() {
+        return asset( \Asset::get_image_path( 'banner-image', 'original', $this->attributes['image'] ) );
     }
 }

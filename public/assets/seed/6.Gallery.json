@@ -1,0 +1,20 @@
+[
+    {
+        "id" : "aa369298-2b2d-4c6d-bd17-864b1d3bebca", 
+        "entity_id" : "fa0a8f8f-84c5-44f4-aac5-7f234911a111",
+        "entity_type" : "product",
+        "description" : null
+    },
+    {
+        "id" : "bcf4a957-31a6-41d1-bf46-3d048e365e01",
+        "entity_id" : "f187a0f2-e9f2-49db-b223-87bdab8e0f2e",
+        "entity_type" : "product",
+        "description" : null
+    },
+    {
+        "id" : "efba46a4-bb3c-43d4-9814-33ada1de43e5",
+        "entity_id" : "67b6bcfa-2f8b-4e1d-bc5a-c24d891bbf83",
+        "entity_type" : "product",
+        "description" : null
+    }
+]

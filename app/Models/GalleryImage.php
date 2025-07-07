@@ -11,6 +11,7 @@ class GalleryImage extends Model {
 	protected $table  = 'gallery_images';
     protected $with   = [];
     protected $casts  = ['id' => 'string', 'enabled' => 'boolean'];
+    protected $appends = ['image_url'];
     protected $fillable = [
         'id',
         'gallery_id',
@@ -27,5 +28,9 @@ class GalleryImage extends Model {
         static::creating(function ($model) {
             $model->id = \Str::uuid();
         });
+    }
+
+    public function getImageUrlAttribute() {
+        return asset( \Asset::get_image_path( 'gallery-image-image', 'normal', $this->attributes['image'] ) );
     }
 }

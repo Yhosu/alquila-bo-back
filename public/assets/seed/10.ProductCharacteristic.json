@@ -1,0 +1,44 @@
+[
+  {
+    "id" : "0b83b7d3-a009-4f8e-a5e8-69686fe5752c",
+    "product_id" : "fa0a8f8f-84c5-44f4-aac5-7f234911a111",
+    "name" : "Característica 1",
+    "description" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vehicula massa convallis felis malesuada egestas. Mauris vulputate nisi non purus fermentum placerat. Morbi justo sem, viverra et turpis vel, porttitor fringilla tortor. Morbi efficitur nulla arcu. Fusce vel pulvinar turpis. Nulla pharetra elit vitae vestibulum ultricies. Aenean imperdiet ut quam quis accumsan. Vestibulum porttitor urna ac nibh facilisis, vel imperdiet ante iaculis. Nulla in tincidunt orci. Ut fringilla congue mi ac malesuada.",
+    "order" : 1
+  },
+  {
+    "id":"2acc6251-7ab7-4120-bf0e-f91414572c5b",
+    "product_id" : "fa0a8f8f-84c5-44f4-aac5-7f234911a111",
+    "name" : "Característica 2",
+    "description" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vehicula massa convallis felis malesuada egestas. Mauris vulputate nisi non purus fermentum placerat. Morbi justo sem, viverra et turpis vel, porttitor fringilla tortor. Morbi efficitur nulla arcu. Fusce vel pulvinar turpis. Nulla pharetra elit vitae vestibulum ultricies. Aenean imperdiet ut quam quis accumsan. Vestibulum porttitor urna ac nibh facilisis, vel imperdiet ante iaculis. Nulla in tincidunt orci. Ut fringilla congue mi ac malesuada.",
+    "order" : 2
+  },
+  {
+    "id" : "a37957ea-8f16-41b3-89fb-f72115d65f6a",
+    "product_id" : "f187a0f2-e9f2-49db-b223-87bdab8e0f2e",
+    "name" : "Característica 1",
+    "description" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vehicula massa convallis felis malesuada egestas. Mauris vulputate nisi non purus fermentum placerat. Morbi justo sem, viverra et turpis vel, porttitor fringilla tortor. Morbi efficitur nulla arcu. Fusce vel pulvinar turpis. Nulla pharetra elit vitae vestibulum ultricies. Aenean imperdiet ut quam quis accumsan. Vestibulum porttitor urna ac nibh facilisis, vel imperdiet ante iaculis. Nulla in tincidunt orci. Ut fringilla congue mi ac malesuada.",
+    "order" : 1
+  },
+  {
+    "id" : "ad4a24e7-ea90-4902-8e01-744391885de5",
+    "product_id" : "f187a0f2-e9f2-49db-b223-87bdab8e0f2e",
+    "name" : "Característica 2",
+    "description" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vehicula massa convallis felis malesuada egestas. Mauris vulputate nisi non purus fermentum placerat. Morbi justo sem, viverra et turpis vel, porttitor fringilla tortor. Morbi efficitur nulla arcu. Fusce vel pulvinar turpis. Nulla pharetra elit vitae vestibulum ultricies. Aenean imperdiet ut quam quis accumsan. Vestibulum porttitor urna ac nibh facilisis, vel imperdiet ante iaculis. Nulla in tincidunt orci. Ut fringilla congue mi ac malesuada.",
+    "order" : 2
+  },
+  {
+    "id" : "9c173c5f-90aa-47f4-a2d5-cf0f9b58e1fe",
+    "product_id" : "67b6bcfa-2f8b-4e1d-bc5a-c24d891bbf83",
+    "name" : "Característica 1",
+    "description" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vehicula massa convallis felis malesuada egestas. Mauris vulputate nisi non purus fermentum placerat. Morbi justo sem, viverra et turpis vel, porttitor fringilla tortor. Morbi efficitur nulla arcu. Fusce vel pulvinar turpis. Nulla pharetra elit vitae vestibulum ultricies. Aenean imperdiet ut quam quis accumsan. Vestibulum porttitor urna ac nibh facilisis, vel imperdiet ante iaculis. Nulla in tincidunt orci. Ut fringilla congue mi ac malesuada.",
+    "order" : 1
+  },
+  {
+    "id" : "750710d6-3475-4aa5-875e-9d5544155200",
+    "product_id" : "67b6bcfa-2f8b-4e1d-bc5a-c24d891bbf83",
+    "name" : "Característica 2",
+    "description" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vehicula massa convallis felis malesuada egestas. Mauris vulputate nisi non purus fermentum placerat. Morbi justo sem, viverra et turpis vel, porttitor fringilla tortor. Morbi efficitur nulla arcu. Fusce vel pulvinar turpis. Nulla pharetra elit vitae vestibulum ultricies. Aenean imperdiet ut quam quis accumsan. Vestibulum porttitor urna ac nibh facilisis, vel imperdiet ante iaculis. Nulla in tincidunt orci. Ut fringilla congue mi ac malesuada.",
+    "order" : 2
+  }
+]

@@ -26,6 +26,11 @@ class Deploy extends Command {
      */
     public function handle(){
         if(\App::environment('local')){
+            $directories = \Storage::directories();
+            foreach($directories as $directory){
+                \Storage::deleteDirectory($directory);
+            }
+            $this->info(count($directories).' directorios eliminados.');
             $this->callSilent('down');
             $this->info('0%: Deploy iniciado. Modo Mantenimiento iniciado');
             $this->callSilent('migrate:fresh');

@@ -9,8 +9,6 @@ use Illuminate\Support\Str;
 class ProductFilter extends Model {
     use HasFactory;
 	protected $table  = 'product_filters';
-    protected $hidden = [ 'created_at', 'updated_at' ];
-    protected $appends = ['provider_name', 'data_debt'];
     protected $casts  = [ 'id' => 'string' ];
     const CREATED_AT = "date_of_creation";
 	const UPDATED_AT = "last_modification";
@@ -34,7 +32,7 @@ class ProductFilter extends Model {
         return $this->hasOne(Product::class,'id','product_id');
     }
 
-    public function company_filters() {
-        return $this->hasMany(CompanyFilter::class,'id','company_filter_id');
+    public function product_filter_values() {
+        return $this->hasMany(ProductFilterValue::class, 'company_filter_id', 'id');
     }
 }

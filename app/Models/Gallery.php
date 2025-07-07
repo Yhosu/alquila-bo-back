@@ -31,12 +31,11 @@ class Gallery extends Model {
         });
     }
 
-    public function galleryImages() {
+    public function gallery_images() {
         return $this->hasMany( GalleryImage::class, 'gallery_id','id' )->where('enabled', 1);
     }
 
-    public function company()
-    {
+    public function company(){
         return $this->belongsTo(Company::class, 'entity_id');
     }
 }
