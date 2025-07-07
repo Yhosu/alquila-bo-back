@@ -29,7 +29,7 @@ class Product extends Model {
     public $incrementing = false;
 
     public static function boot() {
-        parent::boot();   
+        parent::boot();
         static::creating(function ($model) {
             $model->id = \Str::uuid();
         });
@@ -48,6 +48,6 @@ class Product extends Model {
     }
 
     public function galleries() {
-        return $this->hasMany( Gallery::class, 'relation_id','id' )->where( 'type', 'product')->where('enabled', 1);
+        return $this->hasMany( Gallery::class, 'entity_id','id' )->where( 'entity_type', 'product')->where('subtype', 'galeria')->where('enabled', 1);
     }
 }

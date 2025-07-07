@@ -11,11 +11,14 @@ class Gallery extends Model {
 	protected $table  = 'galleries';
     protected $with   = [];
     protected $casts  = ['id' => 'string', 'enabled' => 'boolean'];
+    protected $primaryKey = 'id';
+    public $incrementing = false;
+    protected $keyType = 'string';
     protected $fillable = [
-        'id',
-        'relation_id',
-        'type',
-        'image',
+        'entity_id',
+        'entity_type',
+        'subtype',
+        'description',
     ];
 	public $timestamps = true;
     const CREATED_AT = "date_of_creation";
@@ -26,5 +29,14 @@ class Gallery extends Model {
         static::creating(function ($model) {
             $model->id = \Str::uuid();
         });
+    }
+
+    public function galleryImages() {
+        return $this->hasMany( GalleryImage::class, 'gallery_id','id' )->where('enabled', 1);
+    }
+
+    public function company()
+    {
+        return $this->belongsTo(Company::class, 'entity_id');
     }
 }

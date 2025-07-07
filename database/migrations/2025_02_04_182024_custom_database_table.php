@@ -111,15 +111,43 @@ return new class extends Migration
         });
         Schema::create('galleries', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('relation_id')->nullable();
-            $table->enum('type', ['company', 'product', 'banner'])->nullable();
-            $table->string('image')->nullable();
+            $table->string('entity_id')->nullable();//realtion_id cambiar
+            $table->enum('entity_type', ['company', 'product'])->nullable();
+            //$table->enum('subtype', ['galeria', ''])->nullable();
+            $table->string('description')->nullable();
             $table->boolean('enabled')->nullable()->default(1);
             $table->timestamp('date_of_creation')->nullable();
             $table->timestamp('last_modification')->nullable();
             $table->string('creator_id')->nullable();
             $table->string('modificator_id')->nullable();
         });
+
+        Schema::create('gallery_images', function (Blueprint $table) {
+            $table->uuid('id')->primary();
+            $table->string('gallery_id')->nullable();
+            $table->string('image')->nullable();
+            $table->integer('order')->nullable();
+            $table->string('description')->nullable();
+            $table->boolean('enabled')->nullable()->default(1);
+            $table->timestamp('date_of_creation')->nullable();
+            $table->timestamp('last_modification')->nullable();
+            $table->string('creator_id')->nullable();
+            $table->string('modificator_id')->nullable();
+        });
+
+        Schema::create('banners', function (Blueprint $table) {
+            $table->uuid('id')->primary();
+            $table->string('image')->nullable();
+            $table->integer('order')->nullable();
+            $table->string('description')->nullable();
+            $table->boolean('enabled')->nullable()->default(1);
+            $table->timestamp('date_of_creation')->nullable();
+            $table->timestamp('last_modification')->nullable();
+            $table->string('creator_id')->nullable();
+            $table->string('modificator_id')->nullable();
+        });
+
+
         Schema::create('company_filters', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('name')->nullable();

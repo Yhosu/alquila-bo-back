@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Helpers;
 
@@ -17,8 +17,9 @@ use App\Models\CtlpPartner;
 class SeedFunc {
 
     public static function loadData() {
+        $tempReferences = [];
         $image_folders = [
-            [ 
+            [
                 'id'        => 1,
                 'name'      => 'category-image',
                 'extension' => 'png',
@@ -26,7 +27,7 @@ class SeedFunc {
         ];
         \App\Models\ImageFolder::insert($image_folders);
         $image_sizes = [
-            [ 
+            [
                 'id'        => 1,
                 'parent_id' => 1,
                 'code'      => 'normal',
@@ -34,7 +35,7 @@ class SeedFunc {
                 'width'     => 800,
                 'height'    => 560,
             ],
-            [ 
+            [
                 'id'        => 2,
                 'parent_id' => 1,
                 'code'      => 'original',
@@ -51,17 +52,44 @@ class SeedFunc {
             if( $rp == 'json' ) {
                 $fileNameArray = explode('.', $file);
                 $items = json_decode( file_get_contents( public_path('assets/seed/' . $file) ), true );
-                $model = sprintf('\App\Models\%s', $fileNameArray[1]);
-                $node = strtolower( $fileNameArray[1] );
-                collect($items)->each(function ($item) use( $model, $node) { 
+                //$model = sprintf('\App\Models\%s', $fileNameArray[1]);
+                $modelName = $fileNameArray[1];
+                $modelClass = sprintf('\App\Models\%s', $modelName);
+                //$node = strtolower( $fileNameArray[1] );
+                collect($items)->each(function ($item) use($modelClass, $modelName, &$tempReferences) {
                     if( isset( $item['image'] ) ) {
-                        $item['image'] = \Asset::upload_image($item['image'], strtolower($node) . '-image' );
+                        $item['image'] = \Asset::upload_image($item['image'], strtolower($modelName) . '-image' );
                     }
-                    $model::create($item); 
+                    $tempId = $item['temp_id'] ?? null;
+                    unset($item['temp_id']);
+                    foreach ($item as $key => $value) {
+                        if (str_ends_with($key, '_temp_id') && isset($tempReferences[$value])) {
+                            $realField = str_replace('_temp_id', '_id', $key);
+                            $item[$realField] = $tempReferences[$value];
+                            unset($item[$key]);
+                        }
+                    }
+
+                    $model = $modelClass::create($item);
+
+                    if ($model->getKey() && $model->exists) {
+                        try {
+                            $model->refresh();
+                        } catch (\Exception $e) {
+                            \Log::warning('No se pudo hacer refresh del modelo', [
+                                'model' => $modelClass,
+                                'id' => $model->getKey(),
+                                'error' => $e->getMessage(),
+                            ]);
+                        }
+                    }
+                    if ($tempId) {
+                        $tempReferences[$tempId] = $model->id;
+                    }
                 });
             }
         }
-        \DB::statement('SET FOREIGN_KEY_CHECKS=1;');        
+        \DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }
 
     public static function loadTestKeys() {
