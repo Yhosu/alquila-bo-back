@@ -1,47 +1,32 @@
 [
   {
     "id": "fa0a8f8f-84c5-44f4-aac5-7f234911a111",
-    "company_id": "3f1e392e-4e7c-40b2-bdb4-f24c0f0c3453",
+    "company_id": null,
     "category_id": "5d85c08e-ef7b-4e68-91fc-4ed1b6eb47fd",
     "name": "Auriculares Bluetooth Pro",
     "description": "Auriculares inalámbricos con cancelación activa de ruido.",
     "sku": "BT-1000-PRO",
-    "image": "https://images.unsplash.com/photo-1585386959984-a4155224b6fc?auto=format&fit=crop&w=800&q=80&fm=jpg"
-  },
-  {
-    "id": "28e96ef2-b3fc-4fcb-a95f-b3c0ef2c89aa",
-    "company_id": "d2fbbf7d-6c3e-493f-a1b2-89fd7a5e3c9e",
-    "category_id": "d76fdc68-bad2-47c1-9891-8a50be279b84",
-    "name": "Zapatillas Urbanas StreetX",
-    "description": "Zapatillas deportivas cómodas y con diseño moderno.",
-    "sku": "SH-500-STX",
-    "image": "https://images.unsplash.com/photo-1595950653106-6ec2b7b87c55?auto=format&fit=crop&w=800&q=80&fm=jpg"
+    "image": "assets/products/auriculares.jpg",
+    "top" : 1
   },
   {
     "id": "f187a0f2-e9f2-49db-b223-87bdab8e0f2e",
-    "company_id": "1afed932-2d7d-490a-9085-7419b160a9f0",
-    "category_id": "a8e9f97d-50ec-4746-8b56-4cf7ad7f6d22",
-    "name": "Smartwatch ChronoMax",
-    "description": "Reloj inteligente con monitoreo de salud y GPS integrado.",
+    "company_id": null,
+    "category_id": "d76fdc68-bad2-47c1-9891-8a50be279b84",
+    "name": "Vestido en diferentes colores",
+    "description": "Vestido de primavera ideal para primera comunión.",
     "sku": "SW-CHR-900",
-    "image": "https://images.unsplash.com/photo-1516575150278-77136aed6920?auto=format&fit=crop&w=800&q=80&fm=jpg"
+    "image": "assets/products/vestido.jpg",
+    "top" : 1
   },
   {
     "id": "67b6bcfa-2f8b-4e1d-bc5a-c24d891bbf83",
-    "company_id": "8e5a13b6-5e29-4d30-b9c6-8f621c85ac63",
-    "category_id": "8a3720c5-6a0d-4a4a-a0fa-2a90a5f0b11f",
-    "name": "Cámara Mirrorless Alpha-X",
-    "description": "Cámara digital de alta resolución ideal para fotografía profesional.",
+    "company_id": null,
+    "category_id": "5d85c08e-ef7b-4e68-91fc-4ed1b6eb47fd",
+    "name": "Amplificación",
+    "description": "Amplificación completa de más de 5 parlantes de color negro.",
     "sku": "CAM-ALPHA-X1",
-    "image": "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=800&q=80&fm=jpg"
-  },
-  {
-    "id": "c9c7b7cf-3c9f-4f21-b7be-ef218fcd98e4",
-    "company_id": "9aaf1e56-8b64-4e27-a7f3-e8f3c60fd9f4",
-    "category_id": "e9c9d26f-11d1-4047-b53c-c1474e8ce5a0",    
-    "name": "Mochila Explorer 45L",
-    "description": "Mochila resistente al agua, ideal para excursiones y viajes.",
-    "sku": "BP-EXP-45L",
-    "image": "https://images.unsplash.com/photo-1508973378-c5ee597c3e8e?auto=format&fit=crop&w=800&q=80&fm=jpg"
+    "image": "assets/products/amplificacion.jpeg",
+    "top" : 1
   }
 ]

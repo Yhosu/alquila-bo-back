@@ -2,27 +2,22 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Notifications\Notifiable;
- use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Str;
 
-class Ourteam extends Model
-{
-    /** @use HasFactory<\Database\Factories\UserFactory> */
+class AboutUs extends Model {
     use HasFactory;
-	protected $table  = 'our_team';
+	protected $table  = 'about_us';
     protected $with   = [];
-    protected $casts  = ['id' => 'string', 'enabled' => 'boolean'];  
-
+    
+    protected $casts  = ['id' => 'string', 'enabled' => 'boolean'];
     protected $fillable = [
-        'name',
-        'role',
-        'bio',
-        'photo_url',
+        'id',
+        'tittle',
+        'content',
+        'order',
     ];
-
 	public $timestamps = true;
     const CREATED_AT = "date_of_creation";
 	const UPDATED_AT = "last_modification";

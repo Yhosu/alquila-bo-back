@@ -10,5 +10,5 @@ interface HomeInterface {
     public function registerSubscription( string $email, ?string $name = null);
     public function confirmSubscription(string $tokenConfirmSubscription);
     public function cancelSubscription(string $tokenCancelSubscription);
-
+    public function registerForm( string $userId, string $productId, date $initDate, date $finishDate, string $filters = '' );
 }

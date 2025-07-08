@@ -2,31 +2,7 @@
   {
     "id": "550e8400-e29b-41d4-a716-446655440000",
     "name": "Facebook",
-    "icon": "https://example.com/icons/facebook.png",
-    "url": "https://www.facebook.com"
-  },
-  {
-    "id": "550e8400-e29b-41d4-a716-446655440001",
-    "name": "Twitter",
-    "icon": "https://example.com/icons/twitter.png",
-    "url": "https://www.twitter.com"
-  },
-  {
-    "id": "550e8400-e29b-41d4-a716-446655440002",
-    "name": "Instagram",
-    "icon": "https://example.com/icons/instagram.png",
-    "url": "https://www.instagram.com"
-  },
-  {
-    "id": "550e8400-e29b-41d4-a716-446655440003",
-    "name": "LinkedIn",
-    "icon": "https://example.com/icons/linkedin.png",
-    "url": "https://www.linkedin.com"
-  },
-  {
-    "id": "550e8400-e29b-41d4-a716-446655440004",
-    "name": "TikTok",
-    "icon": "https://example.com/icons/tiktok.png",
-    "url": "https://www.tiktok.com"
+    "icon": "fa fa-facebook",
+    "url": "https://www.facebook.com/profile.php?id=61578051081640"
   }
 ]

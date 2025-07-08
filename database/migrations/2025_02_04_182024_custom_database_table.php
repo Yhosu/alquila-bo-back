@@ -30,7 +30,7 @@ return new class extends Migration
         Schema::create('sectors', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('name')->nullable();
-            $table->string('description')->nullable();
+            $table->text('description')->nullable();
             $table->string('slug')->nullable();
             $table->boolean('enabled')->nullable()->default(1);
             $table->timestamp('date_of_creation')->nullable();
@@ -55,7 +55,7 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->string('sector_id')->nullable();
             $table->string('name')->nullable();
-            $table->string('description')->nullable();
+            $table->text('description')->nullable();
             $table->string('slug')->nullable();
             $table->integer('order')->nullable();
             $table->string('image')->nullable();
@@ -98,7 +98,7 @@ return new class extends Migration
             $table->string('category_id')->nullable();
             $table->string('name')->nullable();
             $table->string('slug')->nullable();
-            $table->string('description')->nullable();
+            $table->text('description')->nullable();
             $table->string('sku')->nullable();
             $table->string('image')->nullable();
             $table->boolean('top')->nullable();
@@ -113,8 +113,7 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->string('entity_id')->nullable();//realtion_id cambiar
             $table->enum('entity_type', ['company', 'product'])->nullable();
-            //$table->enum('subtype', ['galeria', ''])->nullable();
-            $table->string('description')->nullable();
+            $table->text('description')->nullable();
             $table->boolean('enabled')->nullable()->default(1);
             $table->timestamp('date_of_creation')->nullable();
             $table->timestamp('last_modification')->nullable();
@@ -127,7 +126,7 @@ return new class extends Migration
             $table->string('gallery_id')->nullable();
             $table->string('image')->nullable();
             $table->integer('order')->nullable();
-            $table->string('description')->nullable();
+            $table->text('description')->nullable();
             $table->boolean('enabled')->nullable()->default(1);
             $table->timestamp('date_of_creation')->nullable();
             $table->timestamp('last_modification')->nullable();
@@ -139,30 +138,7 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->string('image')->nullable();
             $table->integer('order')->nullable();
-            $table->string('description')->nullable();
-            $table->boolean('enabled')->nullable()->default(1);
-            $table->timestamp('date_of_creation')->nullable();
-            $table->timestamp('last_modification')->nullable();
-            $table->string('creator_id')->nullable();
-            $table->string('modificator_id')->nullable();
-        });
-
-
-        Schema::create('company_filters', function (Blueprint $table) {
-            $table->uuid('id')->primary();
-            $table->string('name')->nullable();
-            $table->enum('type', ['radio', 'range', 'checkbox', 'color'])->nullable();
-            $table->boolean('enabled')->nullable()->default(1);
-            $table->timestamp('date_of_creation')->nullable();
-            $table->timestamp('last_modification')->nullable();
-            $table->string('creator_id')->nullable();
-            $table->string('modificator_id')->nullable();
-        });
-        Schema::create('company_filter_values', function (Blueprint $table) {
-            $table->uuid('id')->primary();
-            $table->string('company_filter_id')->nullable();
-            $table->string('name')->nullable();
-            $table->text('configuration')->nullable();
+            $table->text('description')->nullable();
             $table->boolean('enabled')->nullable()->default(1);
             $table->timestamp('date_of_creation')->nullable();
             $table->timestamp('last_modification')->nullable();
@@ -173,7 +149,8 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->string('product_id')->nullable();
             $table->string('name')->nullable();
-            $table->string('description')->nullable();
+            $table->text('description')->nullable();
+            $table->integer('order')->nullable();
             $table->boolean('enabled')->nullable()->default(1);
             $table->timestamp('date_of_creation')->nullable();
             $table->timestamp('last_modification')->nullable();
@@ -183,7 +160,19 @@ return new class extends Migration
         Schema::create('product_filters', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('product_id')->nullable();
-            $table->string('company_filter_id')->nullable();
+            $table->string('name')->nullable();
+            $table->enum('type', ['radio', 'checkbox', 'color'])->nullable();
+            $table->boolean('enabled')->nullable()->default(1);
+            $table->timestamp('date_of_creation')->nullable();
+            $table->timestamp('last_modification')->nullable();
+            $table->string('creator_id')->nullable();
+            $table->string('modificator_id')->nullable();
+        });
+        Schema::create('product_filter_values', function (Blueprint $table) {
+            $table->uuid('id')->primary();
+            $table->string('product_filter_id')->nullable();
+            $table->string('name')->nullable();
+            $table->text('configuration')->nullable();
             $table->boolean('enabled')->nullable()->default(1);
             $table->timestamp('date_of_creation')->nullable();
             $table->timestamp('last_modification')->nullable();
@@ -227,8 +216,6 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->string('title')->nullable();
             $table->text('content')->nullable();
-            // $table->string('image')->nullable();
-            // $table->string('video_url')->nullable();
             $table->string('order')->nullable();
             $table->boolean('enabled')->nullable()->default(1);
             $table->timestamp('date_of_creation')->nullable();
@@ -238,6 +225,7 @@ return new class extends Migration
         });
         Schema::create('our_team', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->string('name')->nullable();
             $table->string('role')->nullable();
             $table->string('bio')->nullable();
             $table->string('photo_url')->nullable();
@@ -281,7 +269,7 @@ return new class extends Migration
 
         Schema::create('notification_templates', function (Blueprint $table) {
             $table->string('cod_notification')->primary();
-            $table->string('description')->nullable();
+            $table->text('description')->nullable();
             $table->string('type')->nullable();
             $table->string('subject')->nullable();
             $table->text('template')->nullable();
@@ -306,6 +294,19 @@ return new class extends Migration
             $table->string('modificator_id')->nullable();
         });
 
+        Schema::create('reservation_forms', function (Blueprint $table) {
+            $table->uuid('id')->primary();
+            $table->string('user_id')->nullable();
+            $table->string('product_id')->nullable();
+            $table->date('init_date')->nullable();
+            $table->date('finish_date')->nullable();
+            $table->text('filters')->nullable();
+            $table->boolean('enabled')->nullable()->default(1);
+            $table->timestamp('date_of_creation')->nullable();
+            $table->timestamp('last_modification')->nullable();
+            $table->string('creator_id')->nullable();
+            $table->string('modificator_id')->nullable();
+        });
     }
 
     /**

@@ -1,0 +1,22 @@
+[
+    {
+        "id" : "c07b59da-a79d-4211-9f68-7f42eec9c5cc",
+        "product_filter_id" : "e99fa667-399c-4e55-bb14-bcddf7ecf2b2",
+        "configuration" : "[{\"key\": \"blanco\", \"value\" : \"#f1ece8\", \"label\" : \"Blanco\"}, {\"key\": \"rojo\", \"value\" : \"#ba241a\", \"label\" : \"Rojo\"}]"
+    },
+    {
+        "id" : "4041bee6-f4cf-4df2-a8db-811d34e4594e",
+        "product_filter_id" : "a405b576-113f-45b6-8b3f-5f1c4d0ccaa0",
+        "configuration" : "[{\"key\": \"cafe\", \"value\" : \"#68462b\", \"label\" : \"Café\"}, {\"key\": \"rojo\", \"value\" : \"#ba241a\", \"label\" : \"Rojo\"}]"
+    },
+    {
+        "id" : "71c32b93-b90e-4136-9932-6a9b03277e50",
+        "product_filter_id" : "04060c21-ff13-47a6-b893-1d7762d13228",
+        "configuration" : "[{\"key\": \"s\", \"value\" : \"S\", \"label\" : \"S\"}, {\"key\": \"m\", \"value\" : \"M\", \"label\" : \"M\"}]"
+    },
+    {
+        "id" : "731026f5-9211-4f16-8475-e3b7ea7110b4",
+        "product_filter_id" : "9a468ce4-ed11-4a0b-9ea5-ad176da3c2fa",
+        "configuration" : "[{\"key\": \"cuatro\", \"value\" : \"4\", \"label\" : \"4\"}, {\"key\": \"ocho\", \"value\" : \"8\", \"label\" : \"8\"}]"
+    }
+]

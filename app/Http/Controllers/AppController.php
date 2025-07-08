@@ -14,6 +14,7 @@ use App\Repositories\Interfaces\AboutusInterface;
 use App\http\Requests\SubscriptionRequest;
 use App\http\Requests\ConfirmSubscriptionRequest;
 use App\http\Requests\CancelSubscriptionRequest;
+use App\http\Requests\ReservationFormRequest;
 class AppController extends Controller {
 
     use RegisterLogs;
@@ -94,6 +95,23 @@ class AppController extends Controller {
             return $this->execLog($e);
         }
     }
+
+    public function getSendForm( ReservationFormRequest $request ) {
+        try {
+            $user = auth()->user();
+            $result = $this->homeInterfaceRepository->registerForm(
+                $user->id,
+                $request->product_id,
+                $request->init_date,
+                $request->finish_date,
+                $request->filters
+            );
+            return ApiResponseService::success('Registro de formulario exitoso.', $result);
+        } catch( Throwable $e ) {
+            return $this->execLog($e);
+        }
+    }
+
 
     public function confirmSubscription( ConfirmSubscriptionRequest $request ) {
         try {

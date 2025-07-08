@@ -2,22 +2,27 @@
 
 namespace App\Models;
 
+// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Str;
+use Illuminate\Notifications\Notifiable;
+ use Laravel\Sanctum\HasApiTokens;
 
-class Banner extends Model {
+class OurTeam extends Model
+{
+    /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory;
-	protected $table  = 'banners';
+	protected $table  = 'our_team';
     protected $with   = [];
-    protected $casts  = ['id' => 'string', 'enabled' => 'boolean'];
-    protected $appends = ['image_url'];
+    protected $casts  = ['id' => 'string', 'enabled' => 'boolean'];  
+
     protected $fillable = [
-        'id',
-        'image',
-        'order',
-        'description',
+        'name',
+        'role',
+        'bio',
+        'photo_url',
     ];
+
 	public $timestamps = true;
     const CREATED_AT = "date_of_creation";
 	const UPDATED_AT = "last_modification";
@@ -27,9 +32,5 @@ class Banner extends Model {
         static::creating(function ($model) {
             $model->id = \Str::uuid();
         });
-    }
-
-    public function getImageUrlAttribute() {
-        return asset( \Asset::get_image_path( 'banner-image', 'original', $this->attributes['image'] ) );
     }
 }

@@ -11,6 +11,7 @@ class Category extends Model {
 	protected $table  = 'categories';
     protected $with   = [];
     protected $casts  = ['id' => 'string'];
+    protected $appends = ['image_url'];
     protected $fillable = [
         'id',
         'name',
@@ -33,5 +34,9 @@ class Category extends Model {
 
     public function products() {
         return $this->hasMany( Product::class, 'category_id', 'id');
+    }
+
+    public function getImageUrlAttribute() {
+        return asset( \Asset::get_image_path( 'category-image', 'normal', $this->attributes['image'] ) );
     }
 }

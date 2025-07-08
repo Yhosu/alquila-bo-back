@@ -1,23 +1,8 @@
 [
   {
-    "image": "https://images.unsplash.com/photo-1533038916948-fbdd53f0c2e1",
+    "id": "4b5473cd-a964-46ee-9ca6-b94535c1a229",
+    "image": "assets/banners/banner1.png",
     "order":1,
-    "description": "Nombre de la empresa 1"
-  },
-  {
-    "image": "https://images.unsplash.com/photo-1670757781705-9b6cb1ad0ca6",
-    "order":2,
-    "description": "Producto principal"
-  },
-  {
-    "image": "https://images.pexels.com/photos/5737367/pexels-photo-5737367.jpeg",
-    "order":3,
-    "description": "Segundo Producto"
-  },
-  {
-    "image": "https://images.pexels.com/photos/20234579/pexels-photo-20234579.jpeg",
-    "order":4,
-    "description": "Tercer producto"
+    "description": "Banner"
   }
-
 ]

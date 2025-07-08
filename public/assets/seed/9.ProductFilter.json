@@ -1,0 +1,26 @@
+[
+    {
+        "id" : "e99fa667-399c-4e55-bb14-bcddf7ecf2b2",
+        "product_id" : "fa0a8f8f-84c5-44f4-aac5-7f234911a111",
+        "name" : "Color",
+        "type" : "color"
+    },
+    {
+        "id" : "a405b576-113f-45b6-8b3f-5f1c4d0ccaa0",
+        "product_id" : "f187a0f2-e9f2-49db-b223-87bdab8e0f2e",
+        "name" : "Color",
+        "type" : "color"
+    },
+    {
+        "id" : "04060c21-ff13-47a6-b893-1d7762d13228",
+        "product_id" : "f187a0f2-e9f2-49db-b223-87bdab8e0f2e",
+        "name" : "Talla",
+        "type" : "radio"
+    },
+    {
+        "id" : "9a468ce4-ed11-4a0b-9ea5-ad176da3c2fa",
+        "product_id" : "67b6bcfa-2f8b-4e1d-bc5a-c24d891bbf83",
+        "name" : "Número de parlantes",
+        "type" : "radio"
+    }
+]
