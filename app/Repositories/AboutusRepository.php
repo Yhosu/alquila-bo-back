@@ -22,7 +22,7 @@ class AboutusRepository implements AboutusInterface
             $now = date('ymd') . '-getaboutus';
             $result = [];
             $information = \Cache::store('database')->remember($now, 43200, function() use( &$result ) {
-                $result['about_us'] = \App\Models\AboutUs::where('enabled', 1)->get();
+                $result['about_us'] = \App\Models\About::where('enabled', 1)->get();
                 $result['our_team'] = \App\Models\OurTeam::where('enabled', 1)->get();
 			    return $result;
             });
