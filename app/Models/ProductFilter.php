@@ -10,6 +10,7 @@ class ProductFilter extends Model {
     use HasFactory;
 	protected $table  = 'product_filters';
     protected $casts  = [ 'id' => 'string' ];
+    protected $with = ['product_filter_value'];
     const CREATED_AT = "date_of_creation";
 	const UPDATED_AT = "last_modification";
     protected $fillable = [
@@ -32,7 +33,7 @@ class ProductFilter extends Model {
         return $this->hasOne(Product::class,'id','product_id');
     }
 
-    public function product_filter_values() {
-        return $this->hasMany(ProductFilterValue::class, 'company_filter_id', 'id');
+    public function product_filter_value() {
+        return $this->hasOne(ProductFilterValue::class, 'product_filter_id', 'id');
     }
 }
