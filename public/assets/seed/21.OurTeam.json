@@ -1,0 +1,32 @@
+[
+  {
+    "id": "d23fc6ba-3ec8-4be4-a64b-3e354b9f4906",
+    "name": "Laura Martínez",
+    "role": "Directora de Operaciones",
+    "bio": "Con más de 15 años liderando equipos multidisciplinarios, Laura es responsable de optimizar los procesos internos y garantizar la eficiencia operativa en todas las áreas de la empresa."
+  },
+  {
+    "id": "a89d7424-8ef9-4c83-8cf3-b47b84cba56c",
+    "name": "Carlos Ríos",
+    "role": "Chief Technology Officer (CTO)",
+    "bio": "Ingeniero de software con una sólida trayectoria en inteligencia artificial y desarrollo de productos. Carlos lidera la innovación tecnológica dentro de la compañía."
+  },
+  {
+    "id": "5ae4cf4f-1b4d-49ab-85d1-cda308660af9",
+    "name": "Mónica Herrera",
+    "role": "Gerente de Recursos Humanos",
+    "bio": "Psicóloga organizacional especializada en gestión del talento. Mónica promueve una cultura laboral positiva y estrategias efectivas de capacitación y retención."
+  },
+  {
+    "id": "f5f46fc4-3473-4fcb-9a10-3c241f4bce0c",
+    "name": "Javier Soto",
+    "role": "Analista Financiero",
+    "bio": "Encargado del análisis de riesgos y planificación presupuestaria. Javier ofrece reportes estratégicos que ayudan a tomar decisiones financieras acertadas."
+  },
+  {
+    "id": "e2b8b33a-caa1-47b5-94c7-805db76b3478",
+    "name": "Ana Beltrán",
+    "role": "Líder de Diseño UX/UI",
+    "bio": "Diseñadora creativa centrada en mejorar la experiencia del usuario en todas las plataformas digitales. Ana fusiona estética y funcionalidad en cada proyecto."
+  }
+]

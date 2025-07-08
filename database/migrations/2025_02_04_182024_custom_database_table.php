@@ -225,6 +225,7 @@ return new class extends Migration
         });
         Schema::create('our_team', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->string('name')->nullable();
             $table->string('role')->nullable();
             $table->string('bio')->nullable();
             $table->string('photo_url')->nullable();
