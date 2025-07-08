@@ -1,0 +1,16 @@
+[
+  {
+    "domain": "SUSCRIPCION",
+    "subdomain":"URL_SUSCRIPCION",
+    "description": "Este parámetro indica la url donde debe el usuario puede finaliza su suscripción",
+    "value":"https://alquila-bo.online/confirmar-suscripcion",
+    "status":"H"
+  },
+  {
+    "domain": "SUSCRIPCION",
+    "subdomain":"DIAS_DURACION_TOKEN",
+    "description": "Este parámetro indica la cantidad de dias que estara vigente el token de confirmación",
+    "value":"7",
+    "status":"H"
+  }
+]

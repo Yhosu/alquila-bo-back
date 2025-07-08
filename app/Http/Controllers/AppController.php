@@ -12,6 +12,8 @@ use App\Repositories\Interfaces\NodeInterface;
 use App\Repositories\Interfaces\HomeInterface;
 use App\Repositories\Interfaces\AboutusInterface;
 use App\http\Requests\SubscriptionRequest;
+use App\http\Requests\ConfirmSubscriptionRequest;
+use App\http\Requests\CancelSubscriptionRequest;
 class AppController extends Controller {
 
     use RegisterLogs;
@@ -92,4 +94,27 @@ class AppController extends Controller {
             return $this->execLog($e);
         }
     }
+
+    public function confirmSubscription( ConfirmSubscriptionRequest $request ) {
+        try {
+            $result = $this->homeInterfaceRepository->confirmSubscription(
+                $request->tokenConfirmSubscription
+            );
+            return ApiResponseService::success('Confirmación de suscripción correcta.', $result);
+        } catch( Throwable $e ) {
+            return $this->execLog($e);
+        }
+    }
+
+    public function cancelSubscription( CancelSubscriptionRequest $request ) {
+        try {
+            $result = $this->homeInterfaceRepository->cancelSubscription(
+                $request->tokenCancelSubscription
+            );
+            return ApiResponseService::success('Cancelacion de suscripción correcta.', $result);
+        } catch( Throwable $e ) {
+            return $this->execLog($e);
+        }
+    }
+
 }

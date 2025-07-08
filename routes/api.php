@@ -20,8 +20,11 @@ Route::prefix('v1')->group(function () {
         /** TODO: Tiene que la información del producto por UUID  */
     Route::get('/product/{uuid}',                [AppController::class,  'getProduct']);
         /** TODO: Tiene que traer todas las latitutdes y longitudes de todas las compañías */
-    Route::get('/get-companies-map',             [AppController::class,  'getCompaniesMap']); 
+    Route::get('/get-companies-map',             [AppController::class,  'getCompaniesMap']);
     Route::post('/register-subscription',        [AppController::class,  'registerSubscription']);
+    Route::post('/confirmation-subscription',        [AppController::class,  'confirmSubscription']);
+    Route::post('/cancelation-subscription',        [AppController::class,  'cancelSubscription']);
+
 });
 
     /* TODO LO QUE ESTA DEBAJO DE ACÁ ES CON TOKEN */

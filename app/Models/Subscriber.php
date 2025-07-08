@@ -16,6 +16,7 @@ class Subscriber extends Model {
         'name',
         'subscription_status',
         'confirmation_token',
+        'cancelation_token'
     ];
 	public $timestamps = true;
     const CREATED_AT = "date_of_creation";

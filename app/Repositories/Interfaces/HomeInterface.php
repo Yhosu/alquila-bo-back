@@ -8,4 +8,7 @@ interface HomeInterface {
     public function getInformation();
     public function getProduct( string $id );
     public function registerSubscription( string $email, ?string $name = null);
+    public function confirmSubscription(string $tokenConfirmSubscription);
+    public function cancelSubscription(string $tokenCancelSubscription);
+
 }
