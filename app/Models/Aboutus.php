@@ -10,6 +10,7 @@ class AboutUs extends Model {
     use HasFactory;
 	protected $table  = 'about_us';
     protected $with   = [];
+    
     protected $casts  = ['id' => 'string', 'enabled' => 'boolean'];
     protected $fillable = [
         'id',
