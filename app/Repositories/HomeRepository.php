@@ -16,6 +16,7 @@ use Illuminate\Http\Request;
 use App\Helpers\Func;
 use App\Enums\SubscriptionStatus;
 use App\Services\EmailService;
+use App\DTOs\CompanyMapDTO;
 
 class HomeRepository implements HomeInterface
 {
@@ -154,5 +155,17 @@ class HomeRepository implements HomeInterface
         $nwForm->save();
             /** TODO: Enviar correo electrónico */
         return $nwForm;
+    }
+
+    public function getCompaniesMap(){
+        try {
+            $now = date('ymd') . '-getCompaniesMap';
+            return \Cache::store('database')->remember($now, 43200, function () {
+                $companies = \App\Models\Company::where('enabled', 1)->get();
+                return CompanyMapDTO::fromCollection($companies);
+            });
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 }

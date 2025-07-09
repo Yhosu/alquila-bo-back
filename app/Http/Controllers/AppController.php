@@ -109,4 +109,14 @@ class AppController extends Controller {
             return $this->execLog($e);
         }
     }
+
+    public function getCompaniesMap() {
+        try {
+            $result = $this->homeInterfaceRepository->getCompaniesMap();
+            return ApiResponseService::success('Información de las empresas para el mapa obtenidas con éxito.', $result);
+        } catch( Throwable $e ) {
+            return $this->execLog($e);
+        }
+    }
+
 }
