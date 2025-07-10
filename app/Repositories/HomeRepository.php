@@ -36,7 +36,7 @@ class HomeRepository implements HomeInterface
             $information = \Cache::store('database')->remember($now, 43200, function() use( &$result ) {
                 $result['banners']    = \App\Models\Banner::where('enabled', 1)->orderBy('order', 'ASC')->get();
                 $result['top_products']    = \App\Models\Product::where('enabled', 1)->where('top', 1)->orderBy('order', 'ASC')->get();
-                $result['products']        = \App\Models\Product::where('enabled', 1)->with('products')->get();
+                $result['products']        = \App\Models\Product::where('enabled', 1)->get();
                 $result['characteristics'] = \App\Models\Characteristic::where('enabled', 1)->get();
                 $result['reviews']         = \App\Models\Review::where('enabled', 1)->get();
                 $result['information']     = \App\Models\Information::where('enabled',1)->get();
