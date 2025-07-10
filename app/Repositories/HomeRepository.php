@@ -34,28 +34,9 @@ class HomeRepository implements HomeInterface
             $now = date('ymd') . '-gethome';
             $result = [];
             $information = \Cache::store('database')->remember($now, 43200, function() use( &$result ) {
-                /*$result['banners'] = \App\Models\Gallery::select('id', 'description', 'entity_id')
-                    ->where('entity_type', 'company')
-                    ->where('subtype', 'banner')
-                    ->with([
-                        'company:id,name',
-                        'galleryImages' => function ($query) {
-                            $query->select('id', 'gallery_id', 'image', 'order', 'description');
-                        }
-                    ])
-                    ->get()->map(function ($gallery) {
-                        // $gallery->makeHidden(['id']);
-                        // $gallery->galleryImages->makeHidden(['id', 'gallery_id']);
-                        return [
-                            'id'             => $gallery->id,
-                            'description'    => $gallery->description,
-                            'company_name'   => optional($gallery->company)->name,
-                            'gallery_images' => $gallery->galleryImages
-                        ];
-                    });*/
                 $result['banners']    = \App\Models\Banner::where('enabled', 1)->orderBy('order', 'ASC')->get();
                 $result['top_products']    = \App\Models\Product::where('enabled', 1)->where('top', 1)->orderBy('order', 'ASC')->get();
-                $result['categories']      = \App\Models\Category::where('enabled', 1)->with('products')->get();
+                $result['products']        = \App\Models\Product::where('enabled', 1)->with('products')->get();
                 $result['characteristics'] = \App\Models\Characteristic::where('enabled', 1)->get();
                 $result['reviews']         = \App\Models\Review::where('enabled', 1)->get();
                 $result['information']     = \App\Models\Information::where('enabled',1)->get();
