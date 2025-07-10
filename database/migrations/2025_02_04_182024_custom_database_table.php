@@ -260,6 +260,7 @@ return new class extends Migration
             $table->timestamp('confirmation_date')->nullable();
             $table->string('cancelation_token')->unique();
             $table->timestamp('cancelation_date')->nullable();
+            $table->boolean('confirmation_email_sent')->nullable()->default(1);
             $table->boolean('enabled')->nullable()->default(1);
             $table->timestamp('date_of_creation')->nullable();
             $table->timestamp('last_modification')->nullable();

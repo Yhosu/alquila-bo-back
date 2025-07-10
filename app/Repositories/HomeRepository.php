@@ -16,6 +16,8 @@ use Illuminate\Http\Request;
 use App\Helpers\Func;
 use App\Enums\SubscriptionStatus;
 use App\Services\EmailService;
+use App\DTOs\CompanyMapDTO;
+use App\DTOs\SubscriberDTO;
 
 class HomeRepository implements HomeInterface
 {
@@ -103,59 +105,58 @@ class HomeRepository implements HomeInterface
                                         ->pluck('value')
                                         ->first() ?? 7;
 
-            $existSubscriber = $this->modelSubscriber::where('email', $email)->where('enabled', 1)
+            $existSubscriber = $this->modelSubscriber::where('email', $email)->where('enabled', 1)->where('confirmation_email_sent', 1)
                 ->where(function ($query) use ($daysExpirationToken){
-                    $query->where('subscription_status',SubscriptionStatus::CONFIRMADO)
+                    $query->where('subscription_status',SubscriptionStatus::CONFIRMADO->value)
                           ->orWhere(function ($q) use ($daysExpirationToken) {
-                                $q->where('subscription_status',SubscriptionStatus::PENDIENTE)
+                                $q->where('subscription_status',SubscriptionStatus::PENDIENTE->value)
                                   ->whereRaw('DATEDIFF(CURDATE(), DATE(date_of_creation)) <= ?', [$daysExpirationToken]);
                     });
             })->first();
 
             if( $existSubscriber ) {
                 $subscription =  $existSubscriber;
-                $resultSendEmail = true;
             }else{
 
                 $existSubscriber = $this->modelSubscriber::where('email', $email)
                                                         ->where('enabled', 1)
-                                                        ->where('subscription_status', SubscriptionStatus::PENDIENTE)
+                                                        ->where('confirmation_email_sent', 1)
+                                                        ->where('subscription_status', SubscriptionStatus::PENDIENTE->value)
                                                         ->where(function ($query) use ($daysExpirationToken){
                                                             $query->whereRaw('DATEDIFF(CURDATE(), DATE(date_of_creation)) > ?', [$daysExpirationToken]);
                                                          })->first();
                 if($existSubscriber){
-                    $existSubscriber->subscription_status = SubscriptionStatus::CANCELADO;
+                    $existSubscriber->subscription_status = SubscriptionStatus::CANCELADO->value;
                     $existSubscriber->enabled = 0;
                     $existSubscriber->save();
                 }
 
-                $subscription = $this->modelSubscriber::create([
-                    'email'                 => $email,
-                    'name'                  => $name,
-                    'subscription_status'   => SubscriptionStatus::PENDIENTE,
-                    'confirmation_token'    => \Str::upper(\Str::uuid()),
-                    'cancelation_token'    => \Str::upper(\Str::uuid()),
-                ]);
+                $confirmationToken = \Str::upper(\Str::uuid());
+
                 $notificationTemplateCache = \Cache::store('database')->remember($now . '-getNotificationTemplate', 43200, function() use( &$notificationTemplate ) {
                     $notificationTemplate = $this->modelNotificationTemplate::where('cod_notification', 'WELCOME_EMAIL')->where('enabled', 1)->first();
 			        return $notificationTemplate;
                 });
                 $notificationTemplateCache->template = str_replace(array('{{name}}','{{year}}','{{confirmation_link}}'),
-                                                                   array($name ?? 'querido usuario',date('Y'),$urlConfirmationSuscription . sprintf("?token=%s", $subscription->confirmation_token)),$notificationTemplateCache->template);
+                                                                   array($name ?? 'querido usuario',date('Y'),$urlConfirmationSuscription . sprintf("?token=%s", $confirmationToken)),$notificationTemplateCache->template);
 
                 $resultSendEmail = $this->emailService->sendEmail(
                     $email,
                     $notificationTemplateCache->subject,
                     $notificationTemplateCache->template
                 );
+
+                $subscription = $this->modelSubscriber::create([
+                    'email'                     => $email,
+                    'name'                      => $name,
+                    'subscription_status'       => SubscriptionStatus::PENDIENTE->value,
+                    'confirmation_token'        => $confirmationToken,
+                    'cancelation_token'         => \Str::upper(\Str::uuid()),
+                    'confirmation_email_sent'   => $resultSendEmail
+                ]);
+
             }
-
-            $resultSubscription = [
-                'subscription' => $subscription->only(['email','name','subscription_status']),
-                'status_send_email'  => $resultSendEmail
-            ];
-
-            return $resultSubscription;
+            return SubscriberDTO::fromModel($subscription);
         } catch( Throwable $th) {
             throw $th;
         }
@@ -173,13 +174,14 @@ class HomeRepository implements HomeInterface
             });
 
             $subscriber = $this->modelSubscriber::where('confirmation_token', $tokenConfirmSubscription)
-                                                         ->where('subscription_status', SubscriptionStatus::PENDIENTE)
+                                                         ->where('subscription_status', SubscriptionStatus::PENDIENTE->value)
                                                          ->where('enabled', 1)
+                                                         ->where('confirmation_email_sent', 1)
                                                          ->where(function ($query) use ($daysExpirationTokenCache){
                                                             $query->whereRaw('DATEDIFF(CURDATE(), DATE(date_of_creation)) <= ?', [$daysExpirationTokenCache]);
                                                          })->first();
             if( $subscriber ) {
-                $subscriber->subscription_status = SubscriptionStatus::CONFIRMADO;
+                $subscriber->subscription_status = SubscriptionStatus::CONFIRMADO->value;
                 $subscriber->confirmation_date = now();
                 $subscriber->save();
 
@@ -197,11 +199,12 @@ class HomeRepository implements HomeInterface
         try {
 
             $subscriber = $this->modelSubscriber::where('cancelation_token', $tokenCancelSubscription)
-                                                         ->where('subscription_status', SubscriptionStatus::CONFIRMADO)
+                                                         ->where('subscription_status', SubscriptionStatus::CONFIRMADO->value)
                                                          ->where('enabled', 1)
+                                                         ->where('confirmation_email_sent', 1)
                                                          ->first();
             if( $subscriber ) {
-                $subscriber->subscription_status = SubscriptionStatus::CANCELADO;
+                $subscriber->subscription_status = SubscriptionStatus::CANCELADO->value;
                 $subscriber->cancelation_date = now();
                 $subscriber->save();
 
@@ -249,5 +252,17 @@ class HomeRepository implements HomeInterface
         $nwForm->save();
             /** TODO: Enviar correo electrónico */
         return $nwForm;
+    }
+
+    public function getCompaniesMap(){
+        try {
+            $now = date('ymd') . '-getCompaniesMap';
+            return \Cache::store('database')->remember($now, 43200, function () {
+                $companies = \App\Models\Company::where('enabled', 1)->get();
+                return CompanyMapDTO::fromCollection($companies);
+            });
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 }
