@@ -10,7 +10,7 @@ class Product extends Model {
     use HasFactory;
 	protected $table  = 'products';
     protected $hidden = [ 'created_at', 'updated_at' ];
-    protected $appends = ['image_url'];
+    protected $appends = ['image_url', 'category_name'];
     protected $with = ['product_characteristics', 'product_filters', 'galleries'];
     protected $casts  = [ 'id' => 'string' ];
     const CREATED_AT = "date_of_creation";
@@ -55,5 +55,13 @@ class Product extends Model {
 
     public function galleries() {
         return $this->hasMany( Gallery::class, 'entity_id','id' )->where( 'entity_type', 'product')->where('enabled', 1)->with('gallery_images');
+    }
+
+    public function getCategoryNameAttribute() {
+        return $this->category->name ?? '';
+    }
+
+    public function category() {
+        return $this->hasOne( Category::class, 'id', 'category_id');
     }
 }
