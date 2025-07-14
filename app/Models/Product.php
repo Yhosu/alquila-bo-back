@@ -54,7 +54,7 @@ class Product extends Model {
     }
 
     public function galleries() {
-        return $this->hasMany( Gallery::class, 'entity_id','id' )->where( 'entity_type', 'product')->where('enabled', 1)->with('gallery_images');
+        return $this->hasOne( Gallery::class, 'entity_id','id' )->where( 'entity_type', 'product')->where('enabled', 1)->with('gallery_images');
     }
 
     public function getCategoryNameAttribute() {
