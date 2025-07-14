@@ -257,7 +257,10 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->string('subscription_status')->nullable();
             $table->string('confirmation_token')->unique();
-            $table->timestamp('confirmation_date')->useCurrent();
+            $table->timestamp('confirmation_date')->nullable();
+            $table->string('cancelation_token')->unique();
+            $table->timestamp('cancelation_date')->nullable();
+            $table->boolean('confirmation_email_sent')->nullable()->default(1);
             $table->boolean('enabled')->nullable()->default(1);
             $table->timestamp('date_of_creation')->nullable();
             $table->timestamp('last_modification')->nullable();
@@ -277,6 +280,21 @@ return new class extends Migration
             $table->string('creator_id')->nullable();
             $table->string('modificator_id')->nullable();
         });
+
+        Schema::create('parameters', function (Blueprint $table) {
+            $table->string('domain');
+            $table->string('subdomain');
+            $table->primary(['domain', 'subdomain']);
+            $table->string('description')->nullable();
+            $table->text('value')->nullable();
+            $table->string('status')->nullable();
+            $table->boolean('enabled')->nullable()->default(1);
+            $table->timestamp('date_of_creation')->nullable();
+            $table->timestamp('last_modification')->nullable();
+            $table->string('creator_id')->nullable();
+            $table->string('modificator_id')->nullable();
+        });
+
         Schema::create('reservation_forms', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('user_id')->nullable();
