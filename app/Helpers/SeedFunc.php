@@ -17,7 +17,7 @@ class SeedFunc {
         $image_folders = [
             [
                 'id'        => 1,
-                'name'      => 'category-image',
+                'name'      => 'category-image', // tabla en singular - nombre del campo de la tabla
                 'extension' => 'png',
             ],
             [
