@@ -9,7 +9,7 @@ use Illuminate\Support\Str;
 class Company extends Model {
     use HasFactory;
 	protected $table  = 'companies';
-    protected $with   = [];
+    protected $with   = ['social_network_company'];
     protected $casts  = ['id' => 'string', 'enabled' => 'boolean'];
     protected $fillable = [
         'id',
@@ -32,5 +32,8 @@ class Company extends Model {
         static::creating(function ($model) {
             $model->id = \Str::uuid();
         });
+    }
+    public function social_network_company() {
+        return $this->hasMany( SocialNetworkCompany::class, 'company_id', 'id');
     }
 }

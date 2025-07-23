@@ -1,0 +1,37 @@
+[
+  {
+    "id": "a34e5d77-2a1c-4e7a-b5fd-62b987df7c9a",
+    "company_id":"3f1e392e-4e7c-40b2-bdb4-f24c0f0c3453",
+    "name": "Facebook",
+    "icon": "facebook",
+    "url": "https://www.facebook.com/TechNova"
+  },
+  {
+    "id": "c21fbb32-3be1-442d-bcaf-42a6cc9020e5",
+    "company_id":"3f1e392e-4e7c-40b2-bdb4-f24c0f0c3453",
+    "name": "Twitter",
+    "icon": "twitter",
+    "url": "https://twitter.com/TechNova"
+  },
+  {
+    "id": "d82fe209-9845-43b0-a59f-3d11207b7fa4",
+    "company_id":"3f1e392e-4e7c-40b2-bdb4-f24c0f0c3453",
+    "name": "Instagram",
+    "icon": "instagram",
+    "url": "https://www.instagram.com/TechNova"
+  },
+  {
+    "id": "f13d8bde-9aa2-4f8a-bf44-c3d3e601f690",
+    "company_id":"3f1e392e-4e7c-40b2-bdb4-f24c0f0c3453",
+    "name": "LinkedIn",
+    "icon": "linkedin",
+    "url": "https://www.linkedin.com/company/TechNova"
+  },
+  {
+    "id": "e54b9e25-d0c5-4cfc-a503-2d87b9a7b7cc",
+    "company_id":"3f1e392e-4e7c-40b2-bdb4-f24c0f0c3453",
+    "name": "YouTube",
+    "icon": "youtube",
+    "url": "https://www.youtube.com/@TechNova"
+  }
+]

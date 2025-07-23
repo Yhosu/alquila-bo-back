@@ -15,7 +15,7 @@ Route::prefix('v1')->group(function () {
     Route::post('/node-list/{node}/{paginate?}', [AppController::class, 'getNode']);
     Route::get('/home-info',                     [AppController::class, 'getHomeInfo']);
     Route::get('/faqs',                          [AppController::class, 'getFaqs']);
-    Route::get('/information',                   [AppController::class, 'getInformation']);
+    //Route::get('/information',                   [AppController::class, 'getInformation']);
     Route::get('/about-us',                      [AppController::class, 'getAboutus']);
         /** TODO: Tiene que la información del producto por UUID  */
     Route::get('/product/{uuid}',                [AppController::class,  'getProduct']);

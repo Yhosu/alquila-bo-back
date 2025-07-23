@@ -199,21 +199,21 @@ class HomeRepository implements HomeInterface
         }
     }
 
-    public function getInformation() {
-        try {
-            $now = date('ymd') . '-information';
-            $result = [];
-            $information = \Cache::store('database')->remember($now, 43200, function() use( &$result ) {
-                $info = \App\Models\Information::where('enabled', 1)->get();
-			    return $info;
-            });
-                /** Enviar */
-            // \Func::sendEmail( $email, $title, $content );
-            return $information;
-        } catch( Throwable $th) {
-            throw $th;
-        }
-    }
+    // public function getInformation() {
+    //     try {
+    //         $now = date('ymd') . '-information';
+    //         $result = [];
+    //         $information = \Cache::store('database')->remember($now, 43200, function() use( &$result ) {
+    //             $info = \App\Models\Information::where('enabled', 1)->get();
+	// 		    return $info;
+    //         });
+    //             /** Enviar */
+    //         // \Func::sendEmail( $email, $title, $content );
+    //         return $information;
+    //     } catch( Throwable $th) {
+    //         throw $th;
+    //     }
+    // }
 
     public function getProduct( string $id ) {
         $product = \App\Models\Product::find( $id );

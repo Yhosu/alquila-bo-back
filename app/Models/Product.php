@@ -11,7 +11,7 @@ class Product extends Model {
 	protected $table  = 'products';
     protected $hidden = [ 'created_at', 'updated_at' ];
     protected $appends = ['image_url', 'category_name'];
-    protected $with = ['product_characteristics', 'product_filters', 'galleries'];
+    protected $with = ['product_characteristics', 'product_filters', 'galleries', 'company'];
     protected $casts  = [ 'id' => 'string' ];
     const CREATED_AT = "date_of_creation";
 	const UPDATED_AT = "last_modification";
@@ -24,6 +24,7 @@ class Product extends Model {
         'description',
         'sku',
         'image',
+        'video_url',
         'top',
         'order'
     ];

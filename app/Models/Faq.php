@@ -10,6 +10,7 @@ class Faq extends Model {
     use HasFactory;
 	protected $table  = 'faqs';
     protected $with   = [];
+    protected $appends = ['image_url'];
     protected $casts  = ['id' => 'string', 'enabled' => 'boolean'];
     protected $fillable = [
         'id',
@@ -26,5 +27,8 @@ class Faq extends Model {
         static::creating(function ($model) {
             $model->id = \Str::uuid();
         });
+    }
+    public function getImageUrlAttribute() {
+        return asset( \Asset::get_image_path( 'faq-image', 'normal', $this->attributes['image'] ) );
     }
 }

@@ -13,6 +13,7 @@ class OurTeam extends Model
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory;
 	protected $table  = 'our_team';
+    protected $appends = ['image_url'];
     protected $with   = [];
     protected $casts  = ['id' => 'string', 'enabled' => 'boolean'];  
 
@@ -32,5 +33,8 @@ class OurTeam extends Model
         static::creating(function ($model) {
             $model->id = \Str::uuid();
         });
+    }
+    public function getImageUrlAttribute() {
+        return asset( \Asset::get_image_path( 'our-team-image', 'normal', $this->attributes['image'] ) );
     }
 }

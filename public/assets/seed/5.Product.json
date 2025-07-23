@@ -1,7 +1,7 @@
 [
   {
     "id": "fa0a8f8f-84c5-44f4-aac5-7f234911a111",
-    "company_id": null,
+    "company_id": "3f1e392e-4e7c-40b2-bdb4-f24c0f0c3453",
     "category_id": "5d85c08e-ef7b-4e68-91fc-4ed1b6eb47fd",
     "name": "Auriculares Bluetooth Pro",
     "description": "Auriculares inalámbricos con cancelación activa de ruido.",
@@ -11,7 +11,7 @@
   },
   {
     "id": "f187a0f2-e9f2-49db-b223-87bdab8e0f2e",
-    "company_id": null,
+    "company_id": "8e5a13b6-5e29-4d30-b9c6-8f621c85ac63",
     "category_id": "d76fdc68-bad2-47c1-9891-8a50be279b84",
     "name": "Vestido en diferentes colores",
     "description": "Vestido de primavera ideal para primera comunión.",
@@ -21,7 +21,7 @@
   },
   {
     "id": "67b6bcfa-2f8b-4e1d-bc5a-c24d891bbf83",
-    "company_id": null,
+    "company_id": "3f1e392e-4e7c-40b2-bdb4-f24c0f0c3453",
     "category_id": "5d85c08e-ef7b-4e68-91fc-4ed1b6eb47fd",
     "name": "Amplificación",
     "description": "Amplificación completa de más de 5 parlantes de color negro.",

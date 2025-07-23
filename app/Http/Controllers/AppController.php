@@ -56,14 +56,14 @@ class AppController extends Controller {
             return $this->execLog($e);
         }
     }
-    public function getInformation() {
-        try {
-            $result = $this->homeInterfaceRepository->getInformation();
-            return ApiResponseService::success('Agregar información obtenidos con éxito.', $result);
-        } catch( Throwable $e ) {
-            return $this->execLog($e);
-        }
-    }
+    // public function getInformation() {
+    //     try {
+    //         $result = $this->homeInterfaceRepository->getInformation();
+    //         return ApiResponseService::success('Agregar información obtenidos con éxito.', $result);
+    //     } catch( Throwable $e ) {
+    //         return $this->execLog($e);
+    //     }
+    // }
     public function getAboutus() {
         try {
             $result = $this->aboutusInterfaceRepository->getAboutus();

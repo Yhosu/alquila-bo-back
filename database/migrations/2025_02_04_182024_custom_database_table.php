@@ -102,6 +102,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->string('sku')->nullable();
             $table->string('image')->nullable();
+            $table->string('video_url')->nullable();
             $table->boolean('top')->nullable();
             $table->integer('order')->nullable();
             $table->boolean('enabled')->nullable()->default(1);
