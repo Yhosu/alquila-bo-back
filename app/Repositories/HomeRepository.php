@@ -18,14 +18,12 @@ use App\Enums\SubscriptionStatus;
 use App\Services\EmailService;
 use App\DTOs\CompanyMapDTO;
 use App\DTOs\SubscriberDTO;
-use App\DTOs\CommentRegisterDTO;
 
 class HomeRepository implements HomeInterface
 {
     protected $modelSubscriber  = \App\Models\Subscriber::class;
     protected $modelNotificationTemplate  = \App\Models\NotificationTemplate::class;
     protected $modelPararameter  = \App\Models\Parameter::class;
-    protected $modelComment  = \App\Models\Comment::class;
     protected $emailService;
 
     public function __construct(EmailService $emailService)
@@ -248,18 +246,5 @@ class HomeRepository implements HomeInterface
         } catch (\Throwable $th) {
             throw $th;
         }
-    }
-
-    public function registerComment( $userId, $productId, $text) {
-        $product = \App\Models\Product::find( $productId );
-        if( !$product ) throw new BadRequestException("Hubo un error al buscar su producto", ['No se encuentra el producto asociado al id ingresado.']);
-        $comment = $this->modelComment::create([
-            'user_id'       => $userId,
-            'product_id'    => $productId,
-            'text'          => $text,
-            'comment_date'  => now()
-        ]);
-        return CommentRegisterDTO::fromModel($comment);
-
     }
 }

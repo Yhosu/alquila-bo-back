@@ -11,11 +11,13 @@ use App\Traits\RegisterLogs;
 use App\Repositories\Interfaces\NodeInterface;
 use App\Repositories\Interfaces\HomeInterface;
 use App\Repositories\Interfaces\AboutusInterface;
+use App\Repositories\Interfaces\CommentInterface;
 use App\http\Requests\SubscriptionRequest;
 use App\http\Requests\ConfirmSubscriptionRequest;
 use App\http\Requests\CancelSubscriptionRequest;
 use App\http\Requests\ReservationFormRequest;
 use App\http\Requests\CommentRequest;
+
 class AppController extends Controller {
 
     use RegisterLogs;
@@ -23,6 +25,7 @@ class AppController extends Controller {
         private readonly NodeInterface $nodeInterfaceRepository,
         private readonly HomeInterface $homeInterfaceRepository,
         private readonly AboutusInterface $aboutusInterfaceRepository,
+        private readonly CommentInterface $commentInterfaceRepository,
     ){
     }
 
@@ -148,7 +151,7 @@ class AppController extends Controller {
     public function registerComment( CommentRequest $request ) {
         try {
             $user = auth()->user();
-            $result = $this->homeInterfaceRepository->registerComment(
+            $result = $this->commentInterfaceRepository->registerComment(
                 $user->id,
                 $request->product_id,
                 $request->text
@@ -158,6 +161,15 @@ class AppController extends Controller {
             return $this->execLog($e);
         }
     }
-
+    public function getCommentsByProduct( $productId ) {
+        try {
+            $result = $this->commentInterfaceRepository->getCommentsByProduct(
+                $productId
+            );
+            return ApiResponseService::success('Comentarios obtenidos correctamentes.', $result);
+        } catch( Throwable $e ) {
+            return $this->execLog($e);
+        }
+    }
 
 }
