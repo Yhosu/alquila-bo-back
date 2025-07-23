@@ -32,4 +32,5 @@ Route::middleware(['auth:sanctum'])->prefix('v1')->group(function () {
         /* Recibir el formulario del cliente y enviar un email y whatsapp (front) */
     Route::get('/logout',                        [AuthController::class, 'getLogout']);
     Route::post('/send-form',                    [AppController::class,  'getSendForm']);
+    Route::post('/register-comment',             [AppController::class,  'registerComment']);
 });

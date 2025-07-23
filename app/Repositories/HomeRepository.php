@@ -18,12 +18,14 @@ use App\Enums\SubscriptionStatus;
 use App\Services\EmailService;
 use App\DTOs\CompanyMapDTO;
 use App\DTOs\SubscriberDTO;
+use App\DTOs\CommentRegisterDTO;
 
 class HomeRepository implements HomeInterface
 {
     protected $modelSubscriber  = \App\Models\Subscriber::class;
     protected $modelNotificationTemplate  = \App\Models\NotificationTemplate::class;
     protected $modelPararameter  = \App\Models\Parameter::class;
+    protected $modelComment  = \App\Models\Comment::class;
     protected $emailService;
 
     public function __construct(EmailService $emailService)
@@ -42,6 +44,7 @@ class HomeRepository implements HomeInterface
                 $result['characteristics'] = \App\Models\Characteristic::where('enabled', 1)->get();
                 $result['reviews']         = \App\Models\Review::where('enabled', 1)->get();
                 $result['information']     = \App\Models\Information::where('enabled',1)->get();
+                $result['advertisements']    = \App\Models\Advertisement::where('enabled', 1)->orderBy('order', 'ASC')->get();
                     /** TODO: FALTA AGREGAR INFORMACIÓN DE ALQUILA BO */
 			    return $result;
             });
@@ -245,5 +248,18 @@ class HomeRepository implements HomeInterface
         } catch (\Throwable $th) {
             throw $th;
         }
+    }
+
+    public function registerComment( $userId, $productId, $text) {
+        $product = \App\Models\Product::find( $productId );
+        if( !$product ) throw new BadRequestException("Hubo un error al buscar su producto", ['No se encuentra el producto asociado al id ingresado.']);
+        $comment = $this->modelComment::create([
+            'user_id'       => $userId,
+            'product_id'    => $productId,
+            'text'          => $text,
+            'comment_date'  => now()
+        ]);
+        return CommentRegisterDTO::fromModel($comment);
+
     }
 }
