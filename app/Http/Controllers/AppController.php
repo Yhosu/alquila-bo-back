@@ -15,6 +15,7 @@ use App\http\Requests\SubscriptionRequest;
 use App\http\Requests\ConfirmSubscriptionRequest;
 use App\http\Requests\CancelSubscriptionRequest;
 use App\http\Requests\ReservationFormRequest;
+use App\http\Requests\CommentRequest;
 class AppController extends Controller {
 
     use RegisterLogs;
@@ -142,5 +143,21 @@ class AppController extends Controller {
             return $this->execLog($e);
         }
     }
+
+
+    public function registerComment( CommentRequest $request ) {
+        try {
+            $user = auth()->user();
+            $result = $this->homeInterfaceRepository->registerComment(
+                $user->id,
+                $request->product_id,
+                $request->text
+            );
+            return ApiResponseService::success('Registro de comentario exitoso.', $result);
+        } catch( Throwable $e ) {
+            return $this->execLog($e);
+        }
+    }
+
 
 }

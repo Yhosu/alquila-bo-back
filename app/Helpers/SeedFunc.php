@@ -40,6 +40,11 @@ class SeedFunc {
                 'name'      => 'product-image',
                 'extension' => 'png',
             ],
+            [
+                'id'        => 6,
+                'name'      => 'advertisement-image',
+                'extension' => 'png',
+            ],
         ];
         \App\Models\ImageFolder::insert($image_folders);
         $image_sizes = [
@@ -122,7 +127,23 @@ class SeedFunc {
                 'type'      => 'original',
                 'width'     => null,
                 'height'    => null,
-            ]
+            ],
+            [
+                'id'        => 11,
+                'parent_id' => 6,
+                'code'      => 'normal',
+                'type'      => 'resize',
+                'width'     => 1536,
+                'height'    => 1000,
+            ],
+            [
+                'id'        => 12,
+                'parent_id' => 6,
+                'code'      => 'original',
+                'type'      => 'original',
+                'width'     => null,
+                'height'    => null,
+            ],
         ];
         $insert_image_sizes = \App\Models\ImageSize::insert($image_sizes);
         $files = scandir(public_path('assets/seed'));

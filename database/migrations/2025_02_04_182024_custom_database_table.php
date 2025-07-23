@@ -309,6 +309,32 @@ return new class extends Migration
             $table->string('creator_id')->nullable();
             $table->string('modificator_id')->nullable();
         });
+
+        Schema::create('comments', function (Blueprint $table) {
+            $table->uuid('id')->primary();
+            $table->string('user_id')->nullable();
+            $table->string('product_id')->nullable();
+            $table->text('text')->nullable();
+            $table->timestamp('comment_date')->nullable();
+            $table->boolean('enabled')->nullable()->default(1);
+            $table->timestamp('date_of_creation')->nullable();
+            $table->timestamp('last_modification')->nullable();
+            $table->string('creator_id')->nullable();
+            $table->string('modificator_id')->nullable();
+        });
+
+        Schema::create('advertisements', function (Blueprint $table) {
+            $table->uuid('id')->primary();
+            $table->string('image')->nullable();
+            $table->integer('order')->nullable();
+            $table->text('description')->nullable();
+            $table->boolean('enabled')->nullable()->default(1);
+            $table->timestamp('date_of_creation')->nullable();
+            $table->timestamp('last_modification')->nullable();
+            $table->string('creator_id')->nullable();
+            $table->string('modificator_id')->nullable();
+        });
+
     }
 
     /**
