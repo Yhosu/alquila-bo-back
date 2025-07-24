@@ -31,19 +31,13 @@ class CommentRepository implements CommentInterface
             $commetsByProductUser = \App\Models\Comment::with([
                 'user:id,name',
                 'product:id,name,image'
-                /*'product' => function($query) {
-                    $query->select('id','name','image');
-                }*/
             ])
             ->select('id','user_id','product_id','text','comment_date')
             ->where('enabled', 1)
             ->where('product_id', $productId)
             ->orderBy('comment_date', 'DESC')
             ->get();
-
-            \Log::info($commetsByProductUser);
             return CommentByProductDTO::fromCollection($commetsByProductUser);
-                //return $commetsByProductUser;
         } catch (\Throwable $th) {
             throw $th;
         }
