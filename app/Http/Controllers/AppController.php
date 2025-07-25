@@ -11,11 +11,11 @@ use App\Traits\RegisterLogs;
 use App\Repositories\Interfaces\NodeInterface;
 use App\Repositories\Interfaces\HomeInterface;
 use App\Repositories\Interfaces\AboutusInterface;
-use App\http\Requests\SubscriptionRequest;
-use App\http\Requests\ConfirmSubscriptionRequest;
-use App\http\Requests\CancelSubscriptionRequest;
-use App\http\Requests\ReservationFormRequest;
-use App\http\Requests\CommentRequest;
+use App\Http\Requests\SubscriptionRequest;
+use App\Http\Requests\ConfirmSubscriptionRequest;
+use App\Http\Requests\CancelSubscriptionRequest;
+use App\Http\Requests\ReservationFormRequest;
+use App\Http\Requests\CommentRequest;
 class AppController extends Controller {
 
     use RegisterLogs;
