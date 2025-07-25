@@ -12,6 +12,4 @@ interface HomeInterface {
     public function cancelSubscription(string $tokenCancelSubscription);
     public function registerForm( string $userId, string $productId, date $initDate, date $finishDate, string $filters = '' );
     public function getCompaniesMap();
-    public function registerComment( string $userId, string $productId, string $text);
-
 }

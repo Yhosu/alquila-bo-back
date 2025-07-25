@@ -30,7 +30,8 @@ Route::prefix('v1')->group(function () {
     /* TODO LO QUE ESTA DEBAJO DE ACÁ ES CON TOKEN */
 Route::middleware(['auth:sanctum'])->prefix('v1')->group(function () {
         /* Recibir el formulario del cliente y enviar un email y whatsapp (front) */
-    Route::get('/logout',                        [AuthController::class, 'getLogout']);
-    Route::post('/send-form',                    [AppController::class,  'getSendForm']);
-    Route::post('/register-comment',             [AppController::class,  'registerComment']);
+    Route::get('/logout',                           [AuthController::class, 'getLogout']);
+    Route::post('/send-form',                       [AppController::class,  'getSendForm']);
+    Route::post('/register-comment',                [AppController::class,  'registerComment']);
+    Route::get('/get-comments-by-product/{uuid}',    [AppController::class,  'getCommentsByProduct']);
 });

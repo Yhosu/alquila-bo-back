@@ -22,8 +22,8 @@ class CommentRegisterDTO
     public function toArray(): array
     {
         return [
-            'text' => $this->text,
-            'comment_date' => $this->comment_date
+            'text'          => $this->text,
+            'comment_date'  => $this->comment_date
         ];
     }
 }
