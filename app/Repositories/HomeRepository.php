@@ -57,7 +57,7 @@ class HomeRepository implements HomeInterface
             $now = date('ymd') . '-faqs';
             $result = [];
             $information = \Cache::store('database')->remember($now, 43200, function() use( &$result ) {
-                $faqs = \App\Models\Faq::where('enabled', 1)->get();
+                $faqs = \App\Models\Faq::where('enabled', 1)->orderBy('order', 'ASC')->get();
 			    return $faqs;
             });
                 /** Enviar */

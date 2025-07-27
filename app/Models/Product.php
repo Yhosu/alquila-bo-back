@@ -11,7 +11,7 @@ class Product extends Model {
 	protected $table  = 'products';
     protected $hidden = [ 'created_at', 'updated_at' ];
     protected $appends = ['image_url', 'category_name'];
-    protected $with = ['product_characteristics', 'product_filters', 'galleries', 'company'];
+    protected $with = ['product_characteristics', 'product_filters', 'galleries', 'company_social_networks', 'comments'];
     protected $casts  = [ 'id' => 'string' ];
     const CREATED_AT = "date_of_creation";
 	const UPDATED_AT = "last_modification";
@@ -46,6 +46,10 @@ class Product extends Model {
         return $this->hasOne( Company::class, 'id','company_id' );
     }
 
+    public function company_social_networks() {
+        return $this->hasMany(SocialNetworkCompany::class, 'company_id', 'company_id');
+    }
+
     public function product_characteristics() {
         return $this->hasMany( ProductCharacteristic::class, 'product_id','id' )->orderBy('order', 'ASC');
     }
@@ -64,5 +68,9 @@ class Product extends Model {
 
     public function category() {
         return $this->hasOne( Category::class, 'id', 'category_id');
+    }
+
+    public function comments() {
+        return $this->hasMany( Comment::class, 'product_id', 'id');
     }
 }

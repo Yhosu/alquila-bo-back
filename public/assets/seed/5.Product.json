@@ -17,7 +17,8 @@
     "description": "Vestido de primavera ideal para primera comunión.",
     "sku": "SW-CHR-900",
     "image": "assets/products/vestido.jpg",
-    "top" : 1
+    "top" : 1,
+    "video_url" : "https://youtu.be/HPg_je5YGMg"
   },
   {
     "id": "67b6bcfa-2f8b-4e1d-bc5a-c24d891bbf83",
@@ -27,6 +28,7 @@
     "description": "Amplificación completa de más de 5 parlantes de color negro.",
     "sku": "CAM-ALPHA-X1",
     "image": "assets/products/amplificacion.jpeg",
-    "top" : 1
+    "top" : 1,
+    "video_url" : "https://youtu.be/HPg_je5YGMg"
   }
 ]

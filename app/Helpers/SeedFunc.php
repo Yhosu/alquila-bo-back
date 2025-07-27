@@ -45,6 +45,16 @@ class SeedFunc {
                 'name'      => 'advertisement-image',
                 'extension' => 'png',
             ],
+            [
+                'id'        => 7,
+                'name'      => 'faq-image',
+                'extension' => 'png',
+            ],
+            [
+                'id'        => 8,
+                'name'      => 'our-team-image',
+                'extension' => 'png',
+            ],
         ];
         \App\Models\ImageFolder::insert($image_folders);
         $image_sizes = [
@@ -139,6 +149,39 @@ class SeedFunc {
             [
                 'id'        => 12,
                 'parent_id' => 6,
+                'code'      => 'original',
+                'type'      => 'original',
+                'width'     => null,
+                'height'    => null,
+            ],
+
+            [
+                'id'        => 13,
+                'parent_id' => 7,
+                'code'      => 'normal',
+                'type'      => 'resize',
+                'width'     => 700,
+                'height'    => 718,
+            ],
+            [
+                'id'        => 14,
+                'parent_id' => 7,
+                'code'      => 'original',
+                'type'      => 'original',
+                'width'     => null,
+                'height'    => null,
+            ],
+            [
+                'id'        => 15,
+                'parent_id' => 8,
+                'code'      => 'normal',
+                'type'      => 'resize',
+                'width'     => 700,
+                'height'    => 718,
+            ],
+            [
+                'id'        => 16,
+                'parent_id' => 8,
                 'code'      => 'original',
                 'type'      => 'original',
                 'width'     => null,
