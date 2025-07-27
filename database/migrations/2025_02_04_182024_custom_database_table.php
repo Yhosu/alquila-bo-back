@@ -230,7 +230,7 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->string('role')->nullable();
             $table->string('bio')->nullable();
-            $table->string('photo_url')->nullable();
+            $table->string('image')->nullable();
             $table->boolean('enabled')->nullable()->default(1);
             $table->timestamp('date_of_creation')->nullable();
             $table->timestamp('last_modification')->nullable();
