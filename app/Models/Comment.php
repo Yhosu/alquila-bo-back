@@ -10,6 +10,7 @@ class Comment extends Model {
     use HasFactory;
 	protected $table  = 'comments';
     protected $hidden = [ 'created_at', 'updated_at' ];
+    protected $with = ['user'];
     protected $casts  = [ 'id' => 'string' ];
     const CREATED_AT = "date_of_creation";
 	const UPDATED_AT = "last_modification";
