@@ -30,7 +30,7 @@ class AuthController extends Controller {
             );
             return ApiResponseService::success('Usuario logueado con éxito', $result);
         } catch( Throwable $e ) {
-            return ApiResponseService::error('Hubo un error al intentar iniciar sesión', ['Ingrese los datos correctos para poder iniciar sesión'], [], [], 401);
+            return ApiResponseService::error('Hubo un error al intentar iniciar sesión', ['Ingrese los datos correctos para poder iniciar sesión'], [], [], 400);
         }
     }
 
