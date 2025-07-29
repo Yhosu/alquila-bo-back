@@ -35,6 +35,6 @@ class ReservationFormRequest extends FormRequest
             'message' => 'Campos Obligatorios',
             'errors'  => $errors
         ];
-        throw new ValidationException($validator, response()->json($response, 401));
+        throw new ValidationException($validator, response()->json($response, 400));
     }    
 }
