@@ -9,6 +9,9 @@ Route::get('/', function () {
 
 Route::get('/receipt/{code}/{externalTransactionCode}', [ProviderController::class, 'showReceiptByExternalTransactionCode']);
 Route::get('/test-queries', function () {
+    vardump('asdasd');
+    die();
     $product = \App\Models\Product::with('product_characteristics');
     vardump( $product->product_characteristics );
+
 });
